@@ -1,0 +1,1797 @@
+\documentclass[fontsize=3]{scrartcl}
+\usepackage{lmodern}
+
+%\documentclass[10pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[margin=0.35in]{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}				%one use is for spin and and spin down arrows
+\usepackage{amssymb }
+\usepackage[usenames, dvipsnames]{color}
+\usepackage{multicol}
+\usepackage{color,soul}
+\usepackage{siunitx}					% Scientific Notation
+\usepackage{braket}					% braket package to generate bra and ket vectors
+\usepackage{physics}				% useful for physics
+
+
+\usepackage{lineno}
+
+\makeatletter
+\def\makeLineNumberLeft{%
+  \linenumberfont\llap{\hb@xt@\linenumberwidth{\LineNumber\hss}\hskip\linenumbersep}% left line number
+  \hskip\columnwidth% skip over column of text
+  \rlap{\hskip\linenumbersep\hb@xt@\linenumberwidth{\hss\LineNumber}}\hss}% right line number
+\leftlinenumbers% Re-issue [left] option
+\makeatother
+
+\def\rcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{ScriptR}}$}}}
+\def\brcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{BoldR}}$}}}
+\def\hrcurs{{\mbox{$\hat \brcurs$}}}
+
+
+\title{Photonics}
+\author{Joseph Crandall}
+%\date{}							% Activate to display a given date or no date
+
+\begin{document}
+
+\linenumbers
+
+\colorbox{YellowGreen}{Joe Crandall's ECE 6765 Photonics and Fiber Optics}
+\colorbox{Thistle}{HomeWork}
+\colorbox{Cyan}{Topic}
+\colorbox{Orange}{SubTopic}
+\colorbox{Aquamarine}{KNOWTHISMATH}
+\colorbox{RubineRed}{Definition/Constant/Operator}
+\colorbox{LimeGreen}{Question}
+\colorbox{Yellow}{break}
+%s
+\colorbox{RubineRed}{Important Physical Constants}
+plank constant: $h = \SI{6.626e-34}{\meter^2 \kilogram \second^{-1}} $
+\hl{I}
+reduced plank constant: $\hbar = \SI{1.054e-34}{\joule \second} $
+\hl{I}
+vacuum permittivity, permittivity of free space: $\epsilon_0 = \SI{8.854e-12}{\farad \meter^{-1}} $
+\hl{I}
+$\hbar \equiv \frac{h}{2\pi}$
+\hl{I}
+In Free Space
+$c = f \lambda $
+\hl{I}
+In medium with index n
+$\nu = \frac{c}{n} = \frac{f_0 \lambda _0}{n} = (f \lambda)_{eff}$
+\colorbox{Cyan}{Optics Fundamentals} 
+\colorbox{Orange}{Refractive Index}
+wavevector: $k  [\SI{}{ \meter^{-1}}]= 2\pi \ \lambda$
+\hl{I}
+refractive index: $n  [\text{no unit}]$
+\hl{I}
+permittivity (dielectric constant): $ \epsilon  [ \SI{}{ \farad \meter^{-1}} ]$
+\hl{I}
+speed of light in vacuum: $c = \SI{2.99e8}{\meter \second^{-1}}$
+\hl{I}
+free space permittivity: $\epsilon_0 =  [ \SI{8.854e-12}{ \farad \meter^{-1}} ]$
+\hl{I}
+permeability of free vacuum: $\mu_0 =  [ \SI{4\pi e-7}{ \kilogram \meter \second^{-2} \ampere^{-2}} ]$
+\hl{I}
+$k = \omega \sqrt{\mu \epsilon} = \frac{\omega}{c}n$
+\hl{I}
+$n \equiv \sqrt{\frac{\mu \epsilon}{\mu_0 \epsilon_0}}$
+\hl{I}
+$c \equiv \frac{1}{\sqrt{\mu_0 \epsilon_0}}$
+\colorbox{Orange}{complex refractive index}
+complex refractive index: $\widetilde{n}  [\text{no unit}]$
+\hl{I}
+phase or optical density: $ n  [\text{no unit}]$
+\hl{I}
+optical loss: $\kappa  [\text{no unit}]$
+\hl{I}
+$\widetilde{n} = n + i \kappa$
+\colorbox{Orange}{Doping}
+electron density: $n [ \SI{}{ c\meter^{-3} } ] $
+\hl{I}
+hole density: $p [ \SI{}{ c\meter^{-3} } ] $
+\hl{I}
+at equilibrium $n=p=n_i$
+\hl{I}
+conduction band carrier density: $N_c [ \SI{}{ c\meter^{-3} } ] $
+\hl{I}
+valence band carrier density: $N_v [ \SI{}{ c\meter^{-3} } ] $
+\hl{I}
+donar carrier density: $N_d [ \SI{}{ c\meter^{-3} } ] $
+\hl{I}
+aceptor carrier density: $N_a [ \SI{}{ c\meter^{-3} } ] $
+\hl{I}
+$[\SI{}{\joule}] = [\SI{}{\kilogram \meter^2 /\second^{-2}}] $
+\hl{I}
+conduction band energy: $E_c [ \SI{}{\joule} ]$
+\hl{I}
+fermi energy: $E_f [ \SI{}{\joule} ]$
+\hl{I}
+valence band energy: $E_v [ \SI{}{\joule} ]$
+\hl{I}
+Boltzmann constant: $k [ \SI{}{\joule \kelvin^{-1}} ]$
+\hl{I}
+temperature: $T [ \SI{}{\kelvin} ]$
+\hl{I}
+intrinsic carrier concentration (for silicon): $ n_i [ \SI{ e-10 }{ c\meter^{-3}} ]$
+\hl{I}
+$[\SI{}{\coulomb}] = [\SI{}{\ampere \second}] $
+\hl{I}
+charge density: $\rho [ \SI{}{\coulomb \meter^{-3} } ]$
+\hl{l}
+charge:$q [ \SI{}{\coulomb} ]$
+\hl{I}
+$n = N_c \exp-(\frac{E_c - E_f}{kT})$
+\hl{I}
+$p = N_v \exp-(\frac{E_f - E_v}{kT})$
+\hl{I}
+$n = N_d - N_a$
+\hl{I}
+$p = N_a - N_d$
+\hl{I}
+$np = n_i^2$
+\hl{I}
+$\rho = q(p-n+N_D^+ - N_A^-)$
+\colorbox{Orange}{Drift and Diffusion}
+$[\SI{}{\volt}] = [\SI{}{\kilogram \meter^{2} \second^{-3} \ampere^{-1} }]$
+\hl{I}
+electric field: $ \varepsilon [ \SI{}{ \volt \meter^{-1}} ] $ 
+\hl{I}
+hole mobility: $\mu_p [ \SI{}{ \meter^{2} \volt^{-1} \second^{-1} } ] $
+\hl{I}
+hole drift velocity: $ \nu_p  [ \SI{}{ \meter \second^{-1} } ]$
+\hl{I}
+electron mobility: $\mu_n [ \SI{}{ \meter^{2} \volt^{-1} \second^{-1} } ] $
+\hl{I}
+electron drift velocity: $ \nu_n  [ \SI{}{ \meter \second^{-1} } ]$
+\hl{I}
+$\nu_p = \mu_p \varepsilon$
+\hl{I}
+$\nu_n = -\mu_n \varepsilon$
+\hl{I}
+hole drift current density: $ J_{p,drift} [ \SI{}{ \ampere \meter^{-2} } ] $ 
+\hl{I}
+electron drift current density: $ J_{p,drift} [ \SI{}{ \ampere \meter^{-2} } ] $
+\hl{I}
+$ J_{p,drift} = q p \mu_p  \varepsilon$
+\hl{I}
+$ J_{n,drift} = q n \mu_n  \varepsilon$
+\hl{I}
+hole diffusion coefficient: $ D_p [ \SI{}{ \meter^{2} \second^{-1} } ] $ 
+\hl{I}
+electron diffusion coefficient: $ D_n [  \SI{}{ \meter^{2} \second^{-1} } ] $ 
+\hl{I}
+$D_n = \frac{kT}{q} \mu_n$
+\hl{I}
+$D_p = \frac{kT}{q} \mu_p$
+\hl{I}
+hole diffusion current density: $ J_{p, diffusion} [ \SI{}{ \ampere \meter^{-2} } ] $ 
+\hl{I}
+electron diffusion current density: $ J_{n, diffusion} [ \SI{}{ \ampere \meter^{-2} } ] $
+\hl{I}
+$J_{n, diffusion} = q D_n \frac{dn}{dx}$
+\hl{I}
+$J_{p, diffusion} = -q D_p \frac{dp}{dx}$
+\hl{I}
+$J_{total} = J_{n,drift} + J_{n,diffusion} + J_{p,drift} + J_{p,diffusion}$
+\colorbox{Orange}{Excess Carriers and Charge Neutrality}
+equilibrium electron density: $n_0 [ \SI{}{ c\meter^{-3} } ] $
+\hl{I}
+excess electron density: $\delta n [ \SI{}{ c\meter^{-3} } ] $
+\hl{I}
+equilibrium hole density: $p_0 [ \SI{}{ c\meter^{-3} } ] $
+\hl{I}
+excess hole density: $\delta p [ \SI{}{ c\meter^{-3} } ] $
+\hl{I}
+$n \equiv n_0 + \delta n$
+\hl{I}
+$p \equiv p_0 + \delta p$
+\hl{I}
+charge neutrality: $\delta n = \delta p$
+\colorbox{Orange}{Equation of State}
+$\frac{\partial n}{\partial t} = \frac{\partial n}{\partial t}|_{Drift}  +\frac{\partial n}{\partial t}|_{Diffusion} + \frac{\partial n}{\partial t}|_{Recombination Generation} + \frac{\partial n}{\partial t}|_{other(light)}$
+\colorbox{Cyan}{PN Junctions}
+built in potential: $ V_{bi} [\SI{}{\volt}]  $
+\hl{I}
+$V_{bi} = \frac{kT}{q}\ln(\frac{N_d N_a}{n_i^2})$
+\hl{I}
+permittivity of the medium: $ \epsilon [\SI{}{\farad \meter^{-1}}]  $
+\hl{I}
+electric potential field: $ \phi [\SI{}{\volt}]  $
+\hl{I}
+charge density: $ \rho [\SI{}{\coulomb \meter^{-3}}]  $
+\hl{I}
+Poisson Equation $\nabla^2 \phi = -\frac{\rho}{\epsilon}$
+\hl{I}
+$[\SI{}{\farad}] = [\SI{}{\ampere^2 \second^4 \meter^{-2} \kilogram^{-1}}] $
+\hl{I}
+$[\SI{}{\coulomb}] = [\SI{}{\ampere \second}] $
+\colorbox{Orange}{Depletion width}
+depletion width: $W_{depletion} [\SI{}{\meter}]  $
+\hl{I}
+$W_{dep} = \sqrt{\frac{2 \epsilon ( V_{bi} - V_{applied} ) } {q} (\frac{1}{N_A} + \frac{1}{N_D})}$
+\hl{I}
+For PN Junction N-side conducts majority carrier electron, depletion region does not conduct, and p-side conducts majority carrier hole, a pn junction is a capacitor
+\colorbox{Orange}{edge of depletion, junction biased}
+$pn = n_i^2 \exp(qV_a / kT)$, which is the carrier injection over the energy barrier
+\colorbox{Orange}{pn junction current}
+N region $A = E_c - E_f = \frac{kT}{q}\ln \frac{N_c}{N_d}$
+$I = I_0 (\exp(qV/kT) - 1)$
+\hl{I}
+$I_0 = A qn_i^2(\frac{D_p}{L_p N_d} + \frac{D_n}{L_n N_a})$
+\colorbox{Thistle}{Hw1}
+\colorbox{Orange}{Refractive index}
+Refractive index:$R [\SI{}{\text{no unit}}]$
+\hl{I} 
+$ R = | \frac{ \widetilde{n_1} - n_2} {\widetilde{n_1} + n_2} |^2 = \frac{ (n_1 - n_2)^2 + \kappa^2 } {(n_1 + n_2)^2 + \kappa^2 }  $
+\hl{I}
+Optical Absorption: $\alpha [\SI{}{\meter^{-1}}]$
+\hl{I}
+$\alpha = \frac{4\pi \kappa}{\lambda}$
+\hl{I}
+Wave vector of light $K [\SI{}{rad \meter^{-1}}]  $
+\hl{I}
+$K = \frac{1}{\lambda}$
+\hl{I}
+Permittivity: $\epsilon [\SI{}{\farad \meter^{-1}}]$
+\hl{I}
+Absorbance: $A [\SI{}{\meter^{-1}}]$
+\hl{I}
+Incident Intensity: $I_0 [\SI{}{\meter^{-1}}]$
+\hl{I}
+Transmitted Intensity: $I [\SI{}{\meter^{-1}}]$
+\hl{I}
+$A = \log_{10}(\frac{I_0}{I})$
+\hl{I}
+Velocity of Light $V  [\SI{}{\meter \second^{-1} }]$
+\hl{I}
+$V = \frac{c}{n}$
+\hl{I}
+Complex Refractive index: $\widetilde{n} [\SI{}{\text{no unit}}]$
+\hl{I}
+$\widetilde{n} = n + i \kappa$
+\colorbox{Thistle}{Hw2}
+If K vectors the same: direct band  gap
+\hl{I}
+If K vectors are different: indirect band gap
+\hl{I}
+frequency $f  [\SI{}{ \second^{-1} }]$
+\hl{I}
+$E = h f$
+\hl{I}
+built in potential: $\phi_{bi}  [\SI{}{ \volt }]$
+\hl{I}
+$\phi_{bi} = \frac{KT}{q}\ln (\frac{N_D N_A}{n_i^2})$
+\hl{I}
+depletion width $w_{dep}  [\SI{}{ \meter}]$
+\hl{I}
+$W_{dep} = \sqrt{\frac{2 \epsilon_s \phi_{bi}}{qN_d}}$
+\hl{I}
+n side depletion layer width $x_n  [\SI{}{ \meter}]$
+\hl{I}
+p side depletion layer width $x_p  [\SI{}{ \meter}]$
+\hl{I}
+$x_n = \sqrt{ \frac{2 \epsilon_0}{q}(\frac{N_a}{N_d}) \frac{1}{N_a + N_d}(\phi_{bi} - V_{applied}) }$
+\hl{I}
+$x_p = \sqrt{ \frac{2 \epsilon_0}{q}(\frac{N_a}{N_d}) \frac{1}{N_a + N_d}(\phi_{bi} - V_{applied}) }$
+\hl{I}
+electric field $\varepsilon_{max}  [\SI{}{ \volt \meter^{-1}}]$
+\hl{I}
+$\varepsilon_{max} = \frac{-qN_d x_n}{\epsilon_0} = \frac{-qN_a x_p}{\epsilon_0}$
+\hl{I}
+electrostatic potential $\phi_{bi} - V_a = -\frac{\varepsilon_{max} (x_n + x_p)}{2}$
+\hl{I}
+depletion junction capacitance :$C_j = [\SI{} { \farad }] $
+\hl{I}
+$C_j = \sqrt{\frac{q \epsilon_0} { 2(v_{bi} - v_a) } \frac{N_a N_d}{N_a + N_d} }$
+\hl{I}
+With junction capacitance, apply reverse bias voltage, work backwards to solve for built in potential $\phi_{bi}$
+\colorbox{Cyan}{Properties of Light}
+frequency:$\omega [\SI{} { \second^{-1} }] $ 
+\hl{I}
+$k = \omega \sqrt{\mu \epsilon} = \frac{\omega}{c} n$
+\hl{I}
+$n = \sqrt{\epsilon}$
+\colorbox{Cyan}{Drude-Lorentz Model}
+Oscillator Model: $\epsilon_r(\omega) = 1 + \chi + \frac{Ne^2}{\epsilon_0 m_0} \frac{1}{(\omega_0^2 - \omega^2 - i \gamma \omega)}$
+\hl{I}
+Susceptibility (shows the degree of polarization WRT E-field): $\chi$ 
+\hl{I}
+$\epsilon_r = (1+\chi) [\SI{} {\text{no unit}}]$
+\hl{I}
+complex Relative permittivity(a.k.a dielectric constant): $\widetilde{\epsilon_r}  [\SI{} {\text{no unit}}] $ 
+\hl{I}
+$ \sqrt{ \widetilde{\epsilon_r} } = \widetilde{n} = n + i \kappa$
+\hl{I}
+relative index: $n  [\SI{} {\text{no unit}}] $ 
+\hl{I}
+extinction coefficient: $k  [\SI{} {\text{no unit}}] $ 
+\hl{I}
+$\widetilde{\epsilon_r}= \epsilon_1 + i\epsilon_2 = \widetilde{n}^2 = (n + i \kappa)^2 = (n^2 - \kappa^2) + i 2n\kappa$
+\hl{I}
+$n = \frac{1}{\sqrt{2} } [\epsilon_1 + (\epsilon_1^2 + \epsilon_2^2)^{(1/2)} ]^{(1/2)} $
+\hl{I}
+$\kappa = \frac{1}{\sqrt{2}} [-\epsilon_1 + (\epsilon_1^2 + \epsilon_2^2)^{(1/2)} ]^{(1/2)} $
+\colorbox{Orange}{Kramer Kronig Relation}
+Polarization of a Solid: $P  [\SI{} {\coulomb \meter^{-2}} ] $ 
+\hl{I}
+$n(\omega) = 1 + \frac{1}{\pi}P \int_{-\infty}^{\infty} \frac{\kappa(\omega^{\prime})}{\omega^{\prime} - \omega} d \omega^{\prime}$
+\hl{I}
+$\kappa(\omega) = - \frac{1}{\pi}P \int_{-\infty}^{\infty} \frac{n(\omega^{\prime}) - 1}{\omega^{\prime} - \omega} d \omega^{\prime}$
+\hl{I}
+Reflectivity: $R  [\SI{} {\text{no unit}}] $ 
+\hl{I}
+reflection coefficients: $r  [\SI{} {\text{no unit}}] $ 
+\hl{I}
+$\widetilde{\epsilon_n} = n + i\kappa = \sqrt{\epsilon_r} = \sqrt{\epsilon_1 + \epsilon_2}$
+\hl{I}
+$\epsilon_1 = n^2 - \kappa^2$
+\hl{I}
+$\epsilon_2 = 2n\kappa$
+\hl{I}
+$r = -\frac{\widetilde{\epsilon_n} - 1}{\widetilde{\epsilon_n} + 1} = -\frac{n-i\kappa - 1}{n-i\kappa + 1} $
+\hl{I}
+$R = |\frac{n-i\kappa - 1}{n-i\kappa + 1}|^2 = \frac{ (n - 1)^2 + \kappa^2 }{ (n + 1)^2 + \kappa^2 }$
+\hl{I}
+\colorbox{Orange}{Absorption (simple)}
+Reflection and Transmission $R + T =1$
+\hl{I}
+$\alpha = \frac{4\pi \kappa}{\lambda_0} = 2Im[k_{eff}] = 2\frac{2\pi \kappa}{\lambda_0}$
+\hl{I}
+$k_0 = \frac{2\pi}{\lambda_0}$
+\hl{I}
+$k_{eff} = \frac{2\pi}{\lambda_{eff}} = \frac{2\pi}{\lambda_0} \widetilde{\epsilon_n} = \frac{2\pi}{\lambda_0}(n + i\kappa)$
+\hl{I}
+\colorbox{Cyan}{Maxwell Equation}
+Magnetic field: $H  [\SI{} {\ampere \meter^{-1}}] $ 
+\hl{I}
+Electric field: $E  [\SI{} {\volt \meter^{-1}}] $ 
+\hl{I}
+Free Current Density: $J  [\SI{} {\ampere \meter^{-2}}] $ 
+\hl{I}
+Magnetic induction: $B  [\SI{} {\volt \second \meter^{-2}}] $ 
+\hl{I}
+Electric displacement: $D  [\SI{} {\coulomb \meter^{-2}}] $ 
+\hl{I}
+Free charge density: $\rho  [\SI{} {\coulomb \meter^{-3}}] $ 
+\hl{I}
+Gauss Law: $\nabla \cdot D = \rho$
+\hl{I}
+Gauss Law: $\nabla \cdot B = 0$
+\hl{I}
+Faraday's Law: $\nabla \times = -\frac{\partial B}{\partial t}$
+\hl{I}
+Ampere's Law: $\nabla \times H = J + \frac{\partial D}{\partial t}$
+\colorbox{Orange}{Continuity Equation}
+$\nabla \cdot J + \frac{\partial \rho}{\partial t} = 0$
+\colorbox{Orange}{Constitutive Relations}
+Describe the EM properties of a medium
+\hl{I}
+$[\SI{} {\newton}] = [ \SI{} {\kilogram \meter \second^{-2}}] $ 
+\hl{I}
+Polarization: $P  [\SI{} {\coulomb \meter^{-2}}] $ 
+\hl{I}
+(Volume) Magnetization: $M  [\SI{} {\ampere \meter^{-1}}] $ 
+\hl{I}
+Vacuum permittivity: $\epsilon_0 = \SI{8.85e-12} {\farad \meter^{-1}}t $ 
+\hl{I}
+Vacuum permeability: $\mu_0  = [\SI{1.26e-6} {\newton \ampere^{-2}}] $ 
+\hl{I}
+Permittivity: $\epsilon  [\SI{} {\farad \meter^{-1}}] $ 
+\hl{I}
+Permeability: $\mu  [\SI{} {\newton \ampere^{-2}}] $ 
+\hl{I}
+Electric susceptibility: $\chi_{e}  [\SI{} {\text{no unit}}] $ 
+\hl{I}
+Magnetic susceptibility: $\chi_{m}  [\SI{} {\text{no unit}}] $ 
+\hl{I}
+$D=\epsilon_0 E + P$
+\hl{I}
+$B=\mu_0 H + \mu_0 M$
+\hl{I}
+$P=\epsilon_0 \chi_e E$
+\hl{I}
+$M=\chi_m H$
+\hl{I}
+$D= \epsilon_0 (1+\chi_e) E = \epsilon_0 \epsilon_r E = \epsilon E$
+\hl{I}
+$B=\mu_0 (1+\chi_m)H = \mu_0 \mu_r H = \mu H$
+\colorbox{Cyan}{1D potential wells}
+Electron Energy: $E = \frac{\hbar^2 k^2}{2m}$
+\hl{I}
+Wave function: $\psi(x) = 2Ai \sin (\frac{\pi n}{a}x) = C \sin(\frac{\pi n}{a}x)$
+\hl{I}
+$E=\frac{\hbar^2 k^2}{2m} = \frac{h}{8ma^2} n^2$
+\hl{I}
+$\psi(x) = \sqrt{\frac{2}{a}} \cdot \sin(\frac{\pi n}{a} x)$
+\hl{I}
+$\Delta E = \frac{h(2n +1)}{8ma^2}$
+\colorbox{Orange}{Tunneling}
+$\psi_1(x) = A_1 \exp (ikx) + A_2 \exp(-ikx)$
+\hl{I}
+$\psi_2(x) = B_1 \exp (\alpha x) + B_2 \exp(- \alpha x)$
+\hl{I}
+$\psi_3(x) = C_1 \exp (ikx) + C_2 \exp(-ikx)$
+\hl{I}
+$k^2 = \frac{2mE}{\hbar^2}$
+\hl{I}
+$\alpha^2 = \frac{2m (V_0 - E)}{\hbar^2}$
+\hl{I}
+Transmission Coefficient: $T = \frac{1}{1+ D\sinh^2 (\alpha a)}$
+\colorbox{Orange}{Infinite Barrier Model}
+Discrete Energies: $E = \frac{\hbar^2}{2m^*}[k_x^2 + k_y^2 + (\frac{n\pi}{L})^2]$
+\colorbox{Cyan}{Optical Communication}
+Optical Transceiver Components: Transmitter, N-spans cascaded, Receiver
+\hl{I}
+Transmitter: Laser, Pulse generator, modulator, multiplexer
+\hl{I}
+N-spans cascaded: Pre-compensation, EDFA, Transmission Fiber, Ramanpump, DCF, OXC
+\hl{I}
+Receiver: Demultiplexer, Receiver, Decision circuit  
+\colorbox{Orange}{Eye Diagram(drawing)l}
+Amount of distortion
+\hl{I}
+Signal-to-noise ration at the sampling point
+\hl{I}
+Slope indicates sensitivity to timing error; the smaller, the better
+\hl{I}
+Best time to sample (decision point) Most open part of eye = best signal to noise ration
+\hl{I}
+Measure of jitter, time variation of zero crossing
+\colorbox{Cyan}{Waveguide Theory and Optical Modes}
+Step-index fiber
+\hl{I}
+Graded-index (GRIN) fiber
+\hl{I}
+A propagation mode of a waveguide at a given wavelength is a stable shape in which the wave propagates.
+Waveguide mode profiles are wavelength dependent. 
+Waveguide modes at ay given wavelength are completely determined by the corss-sectional geometry and refractive index profile of the waveguide.
+\hl{i} 
+Helmholtz equation: $[\frac{d^2}{dx^2} + k^2 - \beta^2]U(x) = 0$
+\hl{I}
+$k = \frac{\omega}{c}n_{eff}$: effective index
+\hl{I}
+Field boundary conditions: $\beta \equiv k_{eff} = k_0 n_{eff} = \frac{2\pi}{\lambda_0}(n+i\kappa)$
+\hl{I}
+Larger waveguides with higher index contrast supports more modes
+\colorbox{Orange}{Waveguide Dispersion}
+$\text{long }\lambda \rightarrow \text{short } n_{eff}$ 
+\hl{I}
+$\text{short }\lambda \rightarrow \text{long } n_{eff}$ 
+\hl{I}
+$k_{core}=\frac{\omega}{c}n_{core}$
+\hl{I}
+$k_{clad}=\frac{\omega}{c}n_{clad}$
+\hl{I}
+$\beta = k_0 n_{eff} = \frac{\omega}{c}n_{eff}$
+\colorbox{Orange}{Velocity in Waveguides}
+
+Phase velocity: $v_p  [\SI{} {\meter \second^{-1} } ] $ Traveling speed of any given phase of the wave.  
+\hl{I}
+Group Velocity: $v_g  [\SI{} {\meter \second^{-1} } ] $ velocity of wave packets (information).  
+\hl{I}
+$v_g = \frac{d\omega}{d\beta}$
+\hl{I}
+Group Index: $n_g = \frac{c_0}{v_g}$
+\hl{I}
+Effective Index: $n_{eff} = \frac{c_0}{v_p} = c_0 \frac{\omega}{\beta}$ 
+\hl{I}
+In wave guides $n_g$ is greater than $n_{core}$
+\hl{I}
+Optical loss in waveguides: Material attenuation, Roughness scattering, optical leakage
+\hl{I}
+attenuation: electronic absorption, bond vibration, impurity absorption, free carrier absorption, Rayleigh scattering
+\hl{I}
+scattering: planar waveguides: line edge roughness due to imperfect lithography, fibers capilary waves
+\hl{I}
+Optical leakage: bending loss, substrate leakage
+\colorbox{Cyan}{Coupling to Waveguides}
+Grating coupler general formula: $k_0 n_0 \sin(\theta_i) + \frac{2\pi}{A} = k_z = \frac{2\pi}{\lambda_0} (n + i\kappa)_{SOI_mode}$
+\hl{I}
+assumptions: $n_0 = 1$, $k_0 = \frac{2 \pi}{\lambda_0}$, $\kappa_0 \approx 0$
+\hl{I}
+$\therefore \sin(\theta_i) + \frac{\lambda_0}{A} = (n)_{SOI -mode}$
+\hl{I}
+Grating Period: $A [\SI{} {\meter}] $ 
+\hl{I}
+\colorbox{Orange}{Effective Medium Theory (EMT)}
+Maxwell-Garnett Equations
+\hl{I}
+host index: $\epsilon_0 [\SI{} {\text{no unit}}] $ 
+\hl{I}
+intrusion: $\epsilon_1 [\SI{} {\text{no unit}}] $ 
+\hl{I}
+volume fill factor: $r_v [\SI{} {\text{percent}}] $ 
+\hl{I}
+$n = \sqrt{\epsilon}$
+\hl{I}
+$\epsilon_{eff} = \epsilon_0 + \frac{3r_v \gamma}{1-r_v \gamma} \cdot \epsilon_0$
+\hl{I}
+$\gamma = \frac{\epsilon_1 - \epsilon_0}{\epsilon_1 + 2\epsilon_0}$
+\hl{I}
+Coupling efficiency: $n_c [\SI{} {\text{?}}] $ 
+\hl{I}
+$n_c = (1-R_f)(NA)^2$
+\hl{I}
+\colorbox{Orange}{Direction-Coupler Switch}
+$P_a = P_{in} - P_{b} = 1 - |b(L)|^2$
+\hl{I}
+$|b(L)|^2 = \frac{K^2}{\psi^2}\sin^2 (\psi L)$
+\hl{I}
+$\psi = \sqrt{(\frac{\Delta \beta (V_b)}{2})^2 - |K_{ab}|^2}$
+\colorbox{Thistle}{Hw3}
+chromatic dispersion which arises from waveguide effects and is a combination of the material dispersion and waveguide dispersion.
+\hl{I}
+wavenumber:$k = \frac{2\pi}{\lambda}$ the phase number per unit length
+\hl{I}
+angular optical frequency: the oscillation frequency of the electric field of light
+\hl{I}
+Grating Coupler equation, a diffracting grating is an optical device exploiting the phenomenon of diffraction. It contains a periodic structure, which causes spatially varying optical amplitude an or phase changes. 
+\hl{I}
+Waveguide loss attributed to scatting, absorption, radiation. 
+\hl{I}
+$k = \frac{\alpha c}{4 \pi f}$
+\hl{I}
+$K_0 n_0 \sin(\theta_i) + \frac{2\pi}{A} = K_z = \frac{2\pi}{\lambda_0}(n + i\kappa)_{SOI mode}$
+\hl{I}
+$A = \frac{\lambda_0}{n - \sin(\theta_i)}$
+\hl{I}
+$R = m \frac{\pi}{2}$ where $x=0$ for $TE_m$, $K_0 \frac{d}{2}\sqrt{n_i^2 - n_i^2} = m\frac{\pi}{2}$, $m = 1,2,3,...$
+\hl{I}
+for a single mode operation, the condition $K_0 \frac{d}{2}\sqrt{n_1^2 - n^2} < \frac{\pi}{2}$
+\colorbox{Cyan}{Coupled Waveguides to Directional Couplers}
+\colorbox{Orange}{Coupled Mode Switch}
+symmetric: $(U_1 + U_2)\cdot \exp(ikz \cdot (n_{eff} + \Delta n))$
+\hl{I}
+anti-symmetric: $(U_1 - U_2)\cdot \exp(ikz \cdot (n_{eff} - \Delta n))$
+\hl{I}
+If amplitude of symmetric and anit-symmetric modes are lunched,
+coupled mode becomes: $(U_1 + U_2)\cdot \exp(ikz \cdot (n_{eff} + \beta)) + (U_1 - U_2)\cdot \exp(ikz \cdot (n_{eff} - \beta))$
+\hl{I}
+Fundamental Crosstalk problem due to evanescent fields coupling Waveguide modes
+\colorbox{Cyan}{Optimize the Switch}
+\colorbox{Orange}{3 WG switch}
+$\frac{1}{2}(n_{TM1}+n_{TM2})=n_{TM3}$
+\hl{I}
+$L_{TM}  = \frac{\lambda_0}{2(n_{TM1} - n_{TM3})} = \frac{\lambda_0}{2\Delta n_{TM}}$
+\hl{I}
+Goal is to achieve shortest coupling length $L_{TM}$, were $n_{TM1}  = n_{TM2}$
+\hl{I}
+Cross: $n_{TM1} \neq n_{TM2}$
+\hl{I}
+Bar: $n_{TM1} \equiv n_{TM2}$
+\colorbox{Cyan}{Cavities}
+Optical resonate mode: 
+1. a time invariant, stable electromagnetic field pattern(complex amplitude): an eigen solution to the Maxwell equations
+2. discretized resonant frequencies (eigen-values), i.e. these modes appear only at particular frequencies / wavelengths
+3. modal fields are usually spatially confined in a finite domain
+\hl{I}
+Optical resonant cavities
+1. devices that support optical resonant modes
+\hl{I}
+\colorbox{Orange}{phasor summation}
+transmission coefficient $T_{tot} = |a_{tot}|^2 = |\frac{a_1}{1-r}|^2$, summation of field amplitude, taking into account interference effect.
+\hl{I}
+Phasor $r = r_1 \cdot r_2 \cdot \exp(-\alpha L) \cdot \exp(2ikL)$
+\hl{I}
+Case: lets look at a lossless cavity, i.e. $alpha = 0$, $r_1 = r_2 =1$, and thus $|r| = 1$
+\hl{I}
+$kL \neq N \pi$ the vectors have different directions
+\hl{I}
+When $kL = N\pi$ the vectors are aligned
+\hl{I}
+transmission spectra
+\hl{I}
+Case: when there is loss in the cavity $|r| < 1$
+\hl{I}
+the transmission spectra have non-vanishing values even when the resonant condition is not met
+\hl{I}
+Quality Factor: $Q = \frac{\omega_0}{\Delta \omega} = \frac{\omega_0 L \cdot |r|^{0.5}}{c \cdot (1-|r|)}$
+\hl{I}
+Cavity Finesse: $F = \frac{FSR}{\Delta \omega} = \frac{\pi \cdot |r|^{0.5}}{(1-|r|)}$
+\hl{I}
+Determining $Q = \lambda / \Delta \lambda = \lambda_0 / FWHM$
+\hl{I}
+$FSR \equiv \frac{\Delta \omega}{N}  = \frac{\pi c}{L}$
+\hl{I}
+Round trip loss in an F-P cavity
+$1-|r|^2 = 1 - r_1^2 \cdot r_2^2 \exp (-2 \alpha L) \approx (1 - r_1^2 \cdot r_2^2) + 2\alpha L$
+\hl{I}
+Coupling loss (mirror loss): $1-r_1^2 \cdot r_2^2$,
+1. non-unity mirror reflectance
+2. independent of cavity length
+\hl{I}
+Internal loss (distributed loss): $2 \alpha L$
+1. absorption/scattering of light in the cavity
+2. loss proportional to cavity length $L$
+\hl{I}
+Both Q and finesse scales inversely with cavity loss
+1. If distributed loss dominates, Q is independent of cavity length
+2. If coupling loss dominates, F is independent of cavity length.
+\hl{I}
+Cavity fundamentals 
+Q factor $Q = \frac{\omega_0}{\Delta \omega} = \omega_0 \cdot \frac{W}{P_{loss}}$, $W$ energy stored in cavity, $P_{loss}$ power loss
+\hl{I}
+Finess $F = \frac{FSR}{\Delta \omega} \approx \frac{\lambda}{2 n_g L}\cdot Q $
+\hl{I}
+Free spectral range
+$FSR = \frac{\pi c_0}{n_g L}$
+\hl{I}
+Standing wave resonators (fabry perot cavity)
+\hl{I}
+Traveling wave resonators (micro ring resonators)
+\colorbox{Cyan}{Coupling to Cavities}
+coupling via, freespace F-P cavity or via waveguide coupling with traveling wave cavities and Phc cavities
+\colorbox{Orange}{Coupling matrix approach for travelling wave cavities}
+Wave guide loss: $\alpha$
+\hl{I}
+Propagation constant: $\beta$
+\hl{I}
+round trip length: $L$
+\hl{I}
+$A = \exp(-\frac{1}{2} \alpha L)$
+\hl{I}
+$|b_1|^2 = \frac{A^2 + |t|^2 - 2A|t| \cdot \cos(\beta L) }{ 1+ A^2 |t|^2 - 2A|t| \cdot \cos(\beta L)} \cdot |a_1|^2$
+\hl{I}
+$a_2 = b_2 \cdot \exp(i \beta L - \frac{1}{2}\alpha L)$
+\colorbox{Cyan}{Cavity Applications}
+Selective spectral transmission: optical filters for WDM
+\hl{I}
+Coherent optical feedback: lasers
+\hl{I}
+Increased optical path (interaction) length:
+spectroscopy and sensing, modulators and switches, slow light, cavity enhanced
+\hl{I}
+Enhanced field amplitude: nonlinear optics, cavity quantum electrodynamics, cavity optomechanics
+\hl{I}
+Cavities Equal Bad Antennas
+\colorbox{Thistle}{Hw4}
+beating length is twice the the minimum distance required to exchange of the guided power between two waveguides.
+\hl{I}
+$\phi = \frac{\beta_a + \beta_b}{2}$
+\hl{I}
+If $z =0$ the optical power is incident only in wave guide 1, $a(0) = 1, b(0)=0$ we find $|b(z)|^2 = |\frac{k_{ba}}{q}|^2 sin^2 qz$
+\hl{I}
+at $qz = \frac{\pi}{2}, \frac{3\pi}{2}, ...$ where n is an integer
+\hl{I}
+the power transfer from guide a to b is at maximum
+\hl{I}
+$|\frac{K_{ba}}{q}|^2 = \frac{|K_{ba}|^2}{\Delta^2 + |K_{ba}|^2} < 1$
+\hl{I}
+for $\beta_a \neq \beta_b$
+\hl{I}
+the maximum distance $L_b = \frac{\pi}{q}$, at which the output power reappears in the same guide as the input is called the beat length
+\hl{I}
+If $\beta_a = \beta_b$, we have $q=|K_{ab}|$, and the solutions are $a(z) = \cos kz\exp(i\beta z)$ and $b(z) = i\sin kz\exp(i\beta z)$
+, where $k = k_{ab} and k_{ba}$, and $\beta = \beta_a = \beta_b$
+\hl{I}
+complete power transfer occurs for synchronous coupling. For $K_{l} = (2n + 1)\frac{\pi}{2}$ complete power transfer, cross state. 
+\hl{I}
+For $K_{l}= n \pi$ no power transfer, bar state. 
+\colorbox{Orange}{Crossing Length}
+\colorbox{Cyan}{Light Matter Interactions goto Emission}
+Cavity Scaling $V_mode$ decreases then $Q$ decreases
+\hl{I}
+Radiative Bending Losses, and Purcell Factor $F_p \approx Q/V$
+\hl{I}
+Purcell Factor: $F_p = \frac{3}{8\pi}\frac{\lambda^3}{V_eff}Q$, engineer spontaneous emission, increases emission rate
+\hl{I}
+\colorbox{Orange}{Cavity Footprint}
+$L_{Ring} = 2\pi R$
+\hl{I}
+$L_{MZ-equiv} = Q\frac{\lambda}{2n_g}$
+\hl{I}
+Full width at half maximum (FWHM)
+\hl{I}
+$\frac{L_{equiv-MZ}}{L_ring} = \frac{Q \lambda}{2n_g 2 \pi R} = \frac{1}{2} \frac{\Delta v_{FRS}}{\Delta v_{FWHM}} = \frac{1}{2}F$
+\colorbox{Orange}{Cavity Drive Power}
+$E_{bit-average} = \frac{1}{4}VQ_{total} = e\frac{\lambda A_{mode}V}{8F|\frac{\partial n_{real}}{\partial N} + \frac{\partial n_{real}}{\partial P} |}$
+\hl{I}
+$Q_{total} = \exp(\frac{\lambda A_{mode}}{4|\frac{\partial n_{real}}{\partial N} + \frac{\partial n_{real}}{\partial P} |})$
+\hl{I}
+\colorbox{Orange}{Cavity Enhancement and Speed}
+$Q = \frac{\omega}{\Delta \omega}$
+\hl{I}
+$\Delta \omega = \frac{\omega}{Q} = \frac{2 \pi c}{\lambda} \times \frac{1}{Q} = \frac{1}{\tau_{photon}} \equiv \text{Speed}$
+\hl{I}
+$\gamma_{cavity} = v_{cavity} \alpha_{cavity} = \frac{c}{n_cavity} \frac{1}{\tau{photon}}$
+\colorbox{Orange}{Spontaneous Emission}
+Differential Equation: $\frac{dN_2}{dt} [\SI{}{\second^{-1}}]= -A_{21}N_2 $
+\hl{I}
+Solution: $N_2(t) = N_2 (0) \exp(-A_{21}t) = N_2 (0) \exp(-t/\tau) $
+\hl{I}
+Natural radiative lifetime: $\tau [\SI{}{\second^{-1}}] = \frac{1}{A_{21}}$
+\colorbox{Orange}{Simulated Absorption and Emission}
+Absorption Solution: $\frac{dN_1}{dt} = -B_{12} u(\omega_0)N_1$ 
+\hl{I}
+Emission Solution: $\frac{dN_2}{dt} = -B_{21} u(\omega_0)N_2$ 
+\colorbox{Orange}{Einstein Coefficients}
+$g_1 B_{12} = g_2 B_{21}$
+\hl{I}
+$A_{21} = \frac{8 \pi h v^3}{c^3}B_{21}$
+\colorbox{Cyan}{Emitters}
+towards lasers, uncoated facet
+$r = \frac{n-1}{n+1}$, and $R = r^2$
+\hl{I}
+double heterostructure laser has high concentration of both electrons and holes in the smaller band gap active region
+\colorbox{Orange}{Round Trip in laser}
+$2k_g L = 2\pi m$. $m$: integer
+\hl{I}
+$k_g = \frac{\omega}{c}n_i$, $n_i$: effective refractive index
+\hl{I}
+$f_m = m\frac{c}{2n_1 L}$, $f_m$: Longitudinal modes
+\hl{I}
+round trip phase condition $e^{\tau 2 k_{b} L} = 1$
+\colorbox{Orange}{Laser Mode Spacing}
+Mode spacing: $\Delta f = f_{m} - f_{m-1} = \frac{c}{2n_1 L} + m \frac{c}{2L}\frac{(-1)}{n_i^2}\frac{\partial n_1}{\partial f} \Delta f = \frac{c}{2n_1 L}(1+\frac{f}{n_1}\frac{\partial n_1}{\partial f} )^{-1}$
+\hl{I}
+in terms of $\lambda$
+$m \lambda = 2 n_1 L$, $\Delta \lambda = \frac{-\lambda^2}{2n_1 L (1-\frac{\lambda}{n_1} \frac{\partial n_1}{\partial \lambda})}$
+\colorbox{Cyan}{Lasers}
+A laser is mirror 1, laser gain material, mirror 2. Then you electrically or optically pump the gain material. 
+\hl{I}
+Laser Features: monochromatic light, coherent light, small divergence angle, strong $P_{out}$
+\hl{I}
+$J = \frac{I}{(WL)_{laser}} [\SI{}{ \ampere c\meter^{-2} }]$ 
+\hl{I}
+In active region, have diffusion, injection, and recombination $\frac{d n}{dt} = D\nabla^2 n + \frac{J}{qd} - R(n) [\SI{}{ \second^{-1} c\meter^{-3} }]$
+\hl{I}
+A double heterostrucutre laser provides a carrer confinement due to the band offset, meaning, we want carrier to recombine to laser emission in the active rgion only (not in the cladding). The band-offset provides such additional confinement
+\hl{I}
+\colorbox{Orange}{Loss and Gain}
+$\alpha = \frac{4\pi \kappa}{\lambda_0} = 2 Im[k_{eff}]$
+\hl{I}
+Linear Gain model: $g(n) = a(n-n_{tr})$
+\hl{I}
+Log Gain model: $g(n) = g_0 \ln (\frac{n}{n_{tr}})$
+\hl{I}
+$n_{tr}$: transparency carrier conc.
+\hl{I}
+$a$: differential gain (= slope)
+\hl{I}
+$g_0$: gain factor
+\colorbox{Orange}{Threshold Condition}
+$g_{th} \Gamma = \alpha_{i} + \alpha_{m}$
+\hl{I}
+$\alpha_i = \alpha_0(1 - \Gamma) + \alpha_g \Gamma$
+\hl{I}
+$\alpha_{m} = \frac{1}{2L} \ln(\frac{1}{R_1R_2})$
+\hl{I}
+$g_{th}$: threshold gain
+\hl{I}
+$\Gamma$: confinement factor
+\hl{I}
+$\alpha_0$: cladding loss $= 4 \pi \kappa_{cladding} / \lambda$
+\hl{I}
+$\alpha_g$: gain region loss $= 4 \pi \kappa_{gain} / \lambda$
+\hl{I}
+$L$: device length
+\hl{I}
+$R$: reflectivity 
+\colorbox{Thistle}{Hw5}
+$L_{Ring} = 2\pi R$
+\hl{I}
+$L_{MZ-equiv} = \frac{Q \lambda}{2 n_g}$
+\hl{I}
+$\tau_{p} = \frac{1}{(\frac{c}{n_g})(\frac{4\pi}{\lambda})k + \frac{1}{L} \ln (\frac{1}{R})}$
+\hl{I}
+The strong photon matter interaction in integrated high-Q optical resonators make them ideal for sensing. High Q- factor leads to superior spectral resolution and improved sensitivity. Resonators with high Q have low damping so they ring longer. 
+\hl{I}
+Spontaneous emission lifetime: $A_{21} = 8 \pi  h (\frac{1}{\lambda})^2 B_{21}$
+\hl{I}
+$\tau = \frac{\lambda^3}{8\pi h B_{21}}$
+\hl{I}
+mirror loss: $\alpha_m$
+\hl{I}
+reflectivity: $R_1$
+\hl{I}
+intrinsic loss: $\alpha_{i}$
+\hl{I}
+confinement factor: $\Gamma$
+\hl{I}
+intrinsic cladding loss: $\alpha_0$
+\hl{I}
+extinction coefficient: $k_{gain}$
+\hl{I}
+intrinsic gain loss: $\alpha_{g}$
+\hl{I}
+threshold gain: $g_{th}$
+\hl{I}
+A laser starts to lase when all losses are compensated by the gain
+\hl{I}
+$\alpha_{m} = \frac{1}{2L} \ln (\frac{1}{R_1 R_2})$
+\hl{I} 
+$\alpha_{i} =  \alpha_0 (1-\Gamma) + \alpha_0 \Gamma$
+\hl{I}
+$\alpha_0 = 4 \pi K_{gain} \lambda^{-1}$
+\hl{I}
+$g_{th} \Gamma = \alpha_i + \alpha_m$
+
+\colorbox{Thistle}{Hw6}
+The two surviving lasers were analyzed thoroughly in GWU CSI laboratory. Under microscope Laser 1 is $300 \mu m$  long and Laser 2 is $600 \mu m$ long. The dead laser is 1000$\mu m$ long. All facets reflectivity is 30 percent. The L-I characteristics and the optical spectra of two surviving lasers are shown below. 
+
+a) what are the quantum efficiencies in percent of Lasers 1 and 2, respectively?
+$hv: \frac{1.24}{1.55}\cdot q$
+\hl{I} 
+$R:= 30 percent$
+\hl{I}
+$L1:=300 \cdot \mu m$
+\hl{I}
+$L1:=300 \cdot \mu m$
+\hl{I}
+$\eta1:= \frac{50}{90}\cdot \frac{q}{hv}$
+\hl{I}
+$\eta = 0.694$
+\hl{I}
+for Laser 1, $L=300 \mu m$
+\hl{I}
+$P_{out} = \frac{hv}{g} \cdot QE \cdot (I - I_{th})$
+\hl{I}
+$QE = \frac{P_{out}}{(I-I_{th})} \cdot \frac{g}{hv}  = \frac{ \SI{50}{ m\watt} }{ \SI{100}{ m\watt} - \SI{10}{ m\watt} } \cdot \frac{g}{hv} = \frac{50}{90} \cdot \frac{ \SI{1.6e-19}{ } } { 0.8eV \cdot g} = 69.4 \% $
+\hl{I}
+$\frac{1}{\eta} = \frac{1}{\eta_i} + \frac{\alpha_i}{\eta_i}\frac{1}{\ln(1/R) }L$
+\hl{I}
+b) find the internal quantum efficiencies of these lasers [All lasers should have same quantum efficiency]
+$\eta:= \frac{1}{2\cdot \frac{1}{\eta_1} - \frac{1}{\eta_2} }$
+\hl{I}
+$\eta_i = 0.9$
+\hl{I}
+$(\alpha_i) \neq (\alpha_i)_L$
+\hl{I}
+c) Fine the intrinsic loss of these lasers [All lasers should have same intrinsic loss]
+$\alpha_i := (\frac{1}{\eta_1 - \frac{1}{\eta_i}}) \cdot \eta_i \cdot ln(\frac{1}{R}) \cdot \frac{1}{L1}$
+\hl{I}
+$\alpha_i = \SI{20.1}{ c\meter}$ 
+\hl{I}
+$(\alpha m)_1 = \frac{1}{300} \mu m \ln \frac{1}{0.3}$
+\hl{I}
+$(\alpha m)_2 = \frac{1}{150} \mu m \ln \frac{1}{0.3}$
+\hl{I}
+$\frac{\alpha_{m1}}{\alpha_{m2}} = 2$
+\hl{I}
+$n_e = n_i \cdot \frac{\alpha_m}{\alpha_m + \alpha_i}$
+\hl{I}
+d) Find additional current needed beyond threshold to bias the dead laser to generate 50 $\SI{}{ m\watt}$ 
+$\alpha m(L) := \eta_i \frac{\alpha m(L)}{\alpha m(L) + \alpha i}$
+\hl{I}
+The current applied beyond threshold to the dead laser
+$\Delta I3 := \frac{50 \cdot \SI{}{ m\watt}}{ \eta_3 \cdot \frac{hv}{q}}$
+\hl{I}
+$\frac{\Delta I3} { \SI{}{ m \ampere} } = 137.963$
+\hl{I}
+The threshold current is less the twice of the 600-um-long laser, or 30mA. So the current applied should be < 168 mA
+e) Is student guilty
+no
+\hl{I}
+\colorbox{Cyan}{Laser Modulation}
+Laser Loss: $\alpha [\SI{}{ c\meter^{-1}}] $
+\hl{I}
+1. Intrinsic loss = $\alpha_i (lm[n] \kappa)$
+i. Gain region = $\alpha_g$
+ii. Cladding region = $\alpha_0$
+\hl{I}
+2. Mirror loss = $alpha_m$ (=out coupling loss) Mirror 2
+\hl{I}
+$g_th \Gamma = \alpha_i + \alpha_m$
+\hl{I}
+$\alpha_i = \alpha_0 (1-\Gamma) + \alpha_g \Gamma$
+\hl{I}
+$alpha_m = \frac{1}{2L} \ln \frac{1}{R_1 R_2}$
+\hl{I}
+\textbf{Photon Output}
+$P_{out} = \hbar \omega N_{ph} (L w d_{op}) (U_g \alpha_m) =$(energy of a photon)(photon density)(effective volume of the optical mode)(escape rate of photons)
+\hl{I}
+$\frac{N_ph}{\tau_p} = \frac{\Gamma}{qd}(J-J_{th})$
+\hl{I}
+$P_{out} = \hbar \omega v_g \alpha_m \frac{\tau_p}{q}(J - J_{th}) Lw = \frac{\hbar \omega}{q} \frac{\alpha_m}{\alpha_m + \alpha_i} (I-I_{th})$
+\hl{I}
+Cavity Lifetime $\tau_{ph} \nu_g = \frac{1}{\alpha_i + \alpha_m}$
+\hl{I}
+gain is clamped => $g(N) = g(N_{th}) = g_{th}$
+\hl{I}
+carrier cone is clamped $ \Rightarrow N = N_{th}$
+\hl{I}
+$Slope = \frac{\hbar \omega}{q} \eta_i \frac{\alpha_m}{\alpha_i + \alpha_m}$
+\hl{I}
+$N$ clamped above threshold
+\textbf{Quantum Efficiency}(QE)
+Intrinsic $\eta_i =$ carrier-to-photon conversion 
+\hl{I}
+$\eta_i = \frac{Emission(\text{we want})}{\text{All Emission Channles}} = \frac{Bn^2 + R_{st}N_{Ph} }{A_{nr}n + Bn^2 + Cn^3 + R_{st} N_{Ph}} < 100 \% $
+\hl{I}
+$P_{out} = \frac{\hbar \omega}{q} \frac{\alpha_m}{\alpha_m + \alpha_i}\eta_i (I - I_{th})$
+\hl{I}
+Extrinsic $\eta_e = \frac{ \frac{dP_{out}}{dI} }{\frac{\hbar \omega}{q}} = \eta_i \frac{\alpha_m}{\alpha_m + \alpha_i} = \eta_i \frac{\ln(1/R)}{\alpha_i L + ln(1/R)}$
+\hl{I}
+Measure $\eta_e$ for many similar lasers with different L
+\hl{I}
+slope = $\alpha_i \frac{1}{\eta_i} \frac{1}{\ln(1/R)}$
+\hl{I}
+intercept: $\frac{1}{\eta_i}$
+\hl{I}
+$\eta_i$ can be determined from intercept
+\hl{I}
+$\alpha_i$ can be determined from slope
+\hl{I}
+Linear Gain Model $g(N) = g_0 + g^{\prime}(N-N_0)$
+\hl{I}
+Non-Linear Gain Model $g(N) = \frac{g_0 + g^{\prime}(N-N_0)}{1+ \epsilon S}$
+\hl{I}
+Quantized optical transitions
+$E_b = E_g + E_{en} + \frac{\hbar^2 k t^2}{2 m_{e}^{*}}$
+\hl{I}
+Gain Shape: $\alpha_0 (\hbar \omega) = \frac{\pi \omega}{n_r c \cdot \epsilon_0} |\hat{e}\cdot \vec{u_cv}|^2 \cdot \frac{1}{2\pi^2} \cdot (\frac{2m_r^*}{\hbar^2})^{3/2} \cdot \sqrt{\hbar \omega - E_g}$
+\hl{I}
+Full Gain Picture
+$\alpha(\hbar \omega) = \alpha_0 (\hbar \omega) [f_r(E_i) - f_c(E_2)]$
+\hl{I}
+$\Delta I_{pump} \Rightarrow \Delta P_{out}$
+\hl{I}
+$\textbf{Linear Gain + AC}$
+small signal $\frac{d}{dt}n(t) = \frac{j(t)}{qd} - \frac{n(t)}{\tau} - \nu [g^{\prime} S_0 n(t) + g_0 s(t)]$
+\hl{I}
+$\frac{d}{dt}s(t) = \Gamma \nu [g^{\prime}S_0 n(t) + g_0 s(t)] - \frac{s(t)}{\tau_p}$
+\hl{I}
+Ac-modulated current injection: 
+$n(t) = Re[n(\omega)e^{-i \omega t}]$
+$s(t) = Re[s(\omega)e^{-i \omega t}]$
+\hl{I}
+Solution:
+$n(\omega) = \frac{1}{\Gamma \nu g^{\prime} S_0} (-i\omega - \Gamma \nu g_0 + \frac{1}{}\tau_\rho)s(\omega) \approx (\frac{-i \omega}{\Gamma \nu g^{\prime} S_0}) s(\omega) $
+\hl{I}
+$s(\omega) = \frac{\Gamma v g^{\prime} S_0 [j(\omega) / qd]}{D(\omega)}$
+Focus on Denominator |D $(\omega)|^2 = (\omega^2 - \nu g^{\prime} \frac{S_0} {\tau_{\rho} } )^2 + \omega^2 (\frac{1}{\tau} + \nu g^{\prime} S_0)^2 $
+\hl{I}
+Find Max! 
+sub: $y = \omega^2$
+\hl{I}
+$\frac{\partial |D(\omega)|^2 }{\partial y} = 0$
+\hl{I}
+$\omega_r^2 = \nu g^{\prime} \frac{S_0}{\tau_{p}} - \frac{1}{2} (\frac{1}{\tau} + vg^{\prime}S_0)^2$
+\hl{I}
+$\omega_r \approx \sqrt{\nu g^{\prime} \frac{S_0}{\tau_0}}$
+\hl{I}
+$f_r = \frac{1}{2\pi} \sqrt{vg^{\prime}\frac{ S_0}{ \tau_{\rho} }}$
+\hl{I}
+$\omega_r = s\pi f_r$
+\hl{I}
+\textbf{Frequency Response Function} $|\frac{s(\omega)}{j(\omega)}| = \frac{\Gamma \nu g^{\prime} S_0 / qd}{| D(\omega) |} = \frac{(\Gamma \tau_{p} / qd) \omega_r^2}{[(\omega^2 - \omega_r^2)^2 + \omega^2(1/\tau + \tau_{p} \omega^2_r)^2 ]^{(1/2)}}$
+\hl{I}
+\textbf{Case: Non-linear Gain}
+$g(N) = \frac{g_0 + g^{\prime}(N-N_0)}{1+ \epsilon S}$ 
+\hl{I}
+$1+\epsilon S \rightarrow $Non-linear Gain Saturation (@high - speed)
+\hl{I}
+$\epsilon \equiv $ gain suppression coefficient 
+\hl{I}
+Non-linear Gain + AC $| \frac{ s(\omega) } { j( \omega )} |^2 \approx |\frac{ \omega_r^2 \Gamma \tau_{\rho} / qd }{-\omega^2 + \omega_r^2 - i \omega \gamma}|^2 = (\frac{\Gamma \tau_{p}}{qd})^2 \frac{\omega_r^4}{(\omega^2 - \omega_r^2)^2 + \omega^2 \gamma^2}$
+\hl{I}
+linear: $(\omega_{3dB}^2 - \omega_r^2)^2 + \omega_{3dB}^2 (\frac{1}{\tau} + \tau_{p} \omega_r^2)^2 = 2 \omega_r^4$
+\hl{I}
+Non-linear linear: $(\omega_{3dB}^{2} - \omega_{r}^2)^2 + \omega_{3dB}^2 \gamma^2 = 2\omega_r^4$
+\hl{I}
+$\gamma =$ Damping Factor
+\hl{I}
+$\beta = Small \approx 0$
+\hl{I}
+$\gamma \equiv \frac{1}{\tau} + \nu g^{\prime} S_0 + \frac{\epsilon S_0}{\tau_p} + \beta \frac{R_{sp}}{S_0} = \nu g^{\prime}S_0 (1 + \frac{\epsilon}{\nu g^{\prime} \tau_{\rho}}) + \frac{1}{\tau} = Kf_r^2 + \frac{1}{\tau}$
+\hl{I}
+$K = 4\pi^2 (\tau_{rho} + \frac{\epsilon}{\nu g^{\prime}})$
+\hl{I}
+Laser Line width $\Delta \nu_{laser} = \frac{\pi h v(\Delta v_{cavity - res})^2}{P_{out}}$
+\hl{I}
+A laser can be a very clean optical source
+\hl{I}
+Laser Fabrication, 1. Substrate, 2. Epitaxie, 3. Laser Processing, 4. Facets Cleaving, 5. Single Chip Preparation, 6. Mounting Bounding
+\hl{I}
+\colorbox{Cyan}{Non-Linear Optics}
+Is there a photon-photon force in nature, no
+\hl{I}
+Do optical effects depend on E-field or intensity, it depends
+\hl{I}
+Can we design an all-optical Transistor ?= (Switching one optical signal with another), yes
+\hl{I}
+$P = n_e \cdot e \cdot r$
+\hl{I}
+$n_e: $ charge density
+\hl{I}
+$e: $ Electron charge
+\hl{I}
+$r: $Displacement
+\hl{I}
+$D = \epsilon_0 E + P$
+\hl{I}
+Simple Harmonic oscillator model (linear)
+$m \cdot \frac{d^2 \bar{r}}{dt^2} + m \gamma \cdot \frac{d \bar r}{dt} \text{(Damping)} \cdot \frac{d \bar r}{dt} + \omega_b^2 \bar r \text{(Restoring)} = e \bar E \text{(Driving)}$ Lorentz-Drude
+\hl{I}
+Linear Polarization: parabolic potential
+\hl{I}
+2nd order nonlinearity: Pockels media
+\hl{I}
+3rd order nonlinearity: Kerr media
+\hl{I}
+Atomic nucleus, Restoring force, Electronic charge
+\hl{I}
+Nonlinear polarization, Linear Medium: low field intensity $D = \epsilon_0 E + P$, $P= \epsilon_0 \chi \cdot E \text{(Linear Polarization)} \Rightarrow D = \epsilon \cdot E = \epsilon_r \epsilon_0 E$
+\hl{I}
+$\epsilon_r = 1 + \chi$ 
+\hl{I}
+Nonlinear medium: high field intensity
+$D = \epsilon_0 E + P$
+\hl{I}
+$P = \epsilon_0 \chi \cdot E + \chi^{(2)} \cdot E^2 + \chi^{(3)} \cdot E^3 + ... = P_L + P_{NL}$
+\hl{I}
+$P_i = \epsilon_0 \chi_{ij} \cdot E_j \text{(Linear Susceptibility tensor)} + 2d_{ijk} \text{(2nd order nonlinear susceptibility tensor)} \cdot E_j E_k + 4\chi_{ijkl}E_j E_k E_l + ... = P_L + P_NL$ i,j,k = x,y,z
+\hl{I}
+Summation over repeated indicies
+\hl{I}
+2nd order optical nonlinear effects
+\hl{I}
+Pockels/electro-optic effect $\rightarrow \Delta n(V) \propto  E$
+\hl{I}
+Second harmonic generation (SHG) $\rightarrow \omega = 2\omega_0$
+\hl{I}
+Sum/Difference frequency generation (SFG/DFG) $\rightarrow \omega = \omega_1 \pm \omega_2$
+\hl{I}
+Optical parametric amplification/oscillation (OPA/OPO)
+\hl{I}
+3rd order optical nonlinear effects
+\hl{I}
+Optical Kerr effect/quadratic Pockels effect $\rightarrow \Delta n(V) \propto E^2$
+\hl{I}
+Third harmonic generation (THG)$\rightarrow \omega = 3\omega_0$
+\hl{I}
+Four wave mixing (FWM)$\rightarrow \omega = \omega_1 \pm \omega_2 \pm \omega_3$
+\hl{I}
+Two photon absorption (TPA) $\rightarrow 2\omega \omega_0$
+\hl{I}
+Stimulated Raman/Brillion scattering (SRS/SBS)
+\hl{I}
+\textbf{Methodology for nonlinear optics}
+Write expression for electric field in medium: $\bar E = Re[E_0 \cdot U(x,y) \cdot \exp(ik \cdot z - i\omega \cdot t)] = \frac{1}{2} E_0 \cdot U(x,y) \cdot \exp(ik \cdot z - i \omega \cdot) + c.c.$
+\hl{I}
+Calculate the linear and nonlinear polarization: $P = \epsilon_0 \chi \cdot  E + \chi^{(2)} \cdot E^2 + \chi^{(3)} \cdot E^3 + ... = P_{L} + P_{NL}$
+\hl{I}
+Substitute in to the electromagnetic wave equation:
+$\Delta^2 \bar{E} = \mu_0 \frac{\partial^2}{\partial t^2} (\epsilon_0 \bar{E} + \bar{P}) = \mu_0 \epsilon_0 \frac{\partial^2 \bar{E}}{\partial t^2} + \mu_0 \frac{\partial^2}{\partial t^2} P_{NL} \text{ (Source Term)}$
+\hl{I} 
+Second harmonic generation: $P_{NL} = \chi^{(2)} \cdot E^2 ~ \chi^{(2)} .. Re[E_0^2 \exp(i2\omega_0 \cdot t)]$
+\hl{I}
+Optical Kerr effect: Third harmonic generation (THG) 3rd Order Optical Nonlinear effects:
+\hl{I}
+Total electric field $ \bar{E} = E_{light} = Re [ E_0 \cdot \exp(i \omega \cdot t) ] $
+\hl{I}
+Consider the $\omega$ term $I_0 \propto |E_0|^2 = E_0 E_0^* \Rightarrow \Delta n = n_2 I_0 \propto I_0 \Rightarrow $Change of the imaginary part of non-linear index: two photon absorption
+\hl{I}
+Third harmonic generation $P_{NL} = \chi^{(3)} \cdot E^3 \approx \chi^{3} Re[E_0^3 \cdot \exp(i3\omega \cdot t)]$ Consider the $3\omega$ term
+\hl{I}
+Interaction of photons with phonons, photon-phonon = Stokes line, Photon + Phonon = anti-Stokes line
+\hl{I}
+When the virtual levels align with a real energy level Significant enhancement of Raman scattering
+\hl{I}
+Pockels effect / Electro-optic (EO) effect
+\hl{I}
+Total electric field: $ \bar{E} = E_{light} + E_{ex} = RE[E_0 \cdot \exp(\i \omega \cdot t)] + E_{ex} = \frac{1}{2}E_0 \cdot \exp (i \omega \cdot t) + c.c. + E_{ex} $
+\hl{I}
+use $(a+b)^2 = a^2 + 2ab+b^2$
+\hl{I}
+$P_NL = \chi^{(2)} \cdot E^{2} = \chi^{(2)} \{ \frac{1}{2}Re[E_0^2 \cdot \exp(i2\omega \cdot t)] + 2E_{ex} Re[E_0 \cdot \exp(i\omega \cdot t)] + E_{ex}^{2} + \frac{1}{2}E_0 E_0^* \}   $ 
+\hl{I}
+$\approx \chi^2 \{2 E_{ex} \cdot Re[E_0 \exp(i\omega \cdot t) (\text{polarization oscillating at the optical frequency})] + E_{ex}^2 + \frac{1}{2}E_0 E_0^* \text{Static polarization} \}  \approx 2\chi^{(2)} E_{ex} E_{light} $
+\hl{I}
+$(E_0 << E_{ex}) \text{Dielectric constant change due to 2nd order nonlinearity} $
+\hl{I}
+Gate: Optical, Source-Drain Electrical: $\rightarrow$ Photo-Transistor
+\hl{I}
+Gate: Optical, Source-Drain Optical: $\rightarrow$  All-Optical Switch
+\hl{I}
+Gate: Electrical, Source-Drain Electrical: $\rightarrow$  Field-Effect Transistor
+\hl{I}
+Gate: Electrical, Source-Drain Optical: $\rightarrow$  Electro-Optic Modulator
+\colorbox{Cyan}{Electro-optic Modulation}
+Modulator via Modulator and Modulator via Laser
+\hl{I}
+Modulation Mechanisms $\Delta V \rightarrow \Delta_{neff}$ goes to, Pockels $\approx rE$, Kerr $\approx ~(\lambda K) E^2$, Franz-Keldysh and QCSE, Free Carriers $\approx \Delta n_{carrier} $
+\hl{I}
+\colorbox{Cyan}{Types of Modulation}
+$\Delta n$ Electro-refractive Effect ("EO") $\rightarrow$ phase $\Delta n$ (e.g. MZI)
+\hl{I}
+$\Delta k$: electrooptic-absorption(EA) $\rightarrow$ absorption $\Delta \kappa \propto \alpha$ (e.g. linear)
+\colorbox{Cyan}{Electro-Optic Modulation Mechanisms}
+E-Field: Franz-Keldysh, Bulk Material
+\hl{I}
+E-Field + Excitons: Quantum-Confined-Stark-Effect (QCSE), Quantum well dots
+\hl{I}
+Excitons = bounds $e^{-}/h^{+} pair$
+\hl{I}
+Carrier-based, Plasma-effect (for Si)
+\hl{I}
+EAM Performance Vectors Switching Energy: $U_{sw} = \frac{1}{2}Q_{sw}V_{sw} \approx  \SI{1.94e31}{} \frac{d_{ox}}{\epsilon_0 \epsilon_r}S_{eff} n_{eff}^2 (\frac{h \gamma_{eff}}{f_{12}})^2 (\frac{L}{t_{eff}})^{-1}$
+\hl{I}
+\colorbox{Orange}{2D Materials = strong Absorption}
+$\downarrow$ Dimensions $\rightarrow$ $\downarrow$ Coulomb Screening $\rightarrow$ $\uparrow$ High Exciton Binding Energy $\rightarrow$ $\uparrow \alpha$ 
+\hl{I}
+Charge-driven Materials for EO Modulation, Low Broadening $(\gamma)$ Improves Performance
+\hl{I}
+EAM Performance Parameters, 
+\hl{I}
+Switching Charge: $Q_sw = 2.2eWn_{eff} t_{eff}/\sigma_{eff}(\omega) \approx  \SI{6.23e15}{c\meter^{-2}} \frac{h\gamma_{eff}}{f_{12}}S_{eff}n_{eff}$
+\hl{I}
+Effective Thickness $S_{eff} = Wt_{eff} = \frac{1}{n_{eff}^{2} E_a^2} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} n^2(x,y) (E_x^2 + E_y^2)dxdy$
+\hl{I}
+Capacitance: $C_g = \epsilon_0 \epsilon_r WL/d_{ox} = \frac{\epsilon_0 \epsilon_r W t_{eff} L}{d_{ox} t_{eff}} = \frac{\epsilon_0 \epsilon_r}{d_{ox}}S_{eff} (\frac{L}{t_{eff}})$
+\hl{I}
+Switching Voltage: $V_{gw} = Q_{gw}/C_{g} \approx \SI{6.23e15}{c\meter^{-2}} \frac{d_{ox}}{\epsilon_0 \epsilon_r} n_{eff} \frac{h \gamma_{eff}}{f_{12}} (\frac{L}{t_{eff}})^{-1}$
+\hl{I}
+Switching Energy: $U_{sw} = \frac{1}{2} Q_{sw}V_{sw} \approx \SI{1.94e31}{}\frac{d_{ox}}{\epsilon_0 \epsilon_r} S_{eff}n_{eff}^2 (\frac{h \gamma_{eff}}{f_{12}})^2 (\frac{L}{t_{eff}})^{-1}$
+\hl{I}
+3-dB Cutoff Frequency $f_{3dB} = \frac{1}{2}\pi RC_g \approx 1/(2\pi R \frac{\epsilon_0 \epsilon_r}{d_{ox}} S_{eff} (\frac{L}{t_{eff}}))$
+\hl{I}
+Energy Bandwidth Ratio: (EBR) $EBR = U_{sw} / f_{2dB} \approx \SI{1.94e31}{}(2\pi R S_{eff}^{2} n_{eff}^{2})(\frac{h \gamma_{eff}}{f_{12}})^2$
+\hl{I}
+Modulation Characteristics: Contrast ratio $R_{on/off} = \frac{P_{out}(V_{off})}{P_{out}(V_{on})}$
+\hl{I}
+Insertion loss: $Loss = \frac{ P_{in} - P_{out}(V_{off}) }{P_{in}}$
+\hl{I}
+Modulation efficiency $\frac{R_{on/off}}{\Delta V}$
+\hl{I}
+Figure-of-Merit: Mod-strength, Speed, Power-penalty
+$(FOM)_{Device} = \frac{ER}{V_{pp}} \cdot BW_{3dB} \cdot (\frac{1}{IL})|_{on-chip, V=0}$
+\hl{I}
+\colorbox{Orange}{Phase(Interface) Modulator}
+$P_{out} = P_{in}\cos^2 [\frac{\Delta \phi (V)}{2}]$
+\hl{I}
+$\Delta n = \pm \frac{1}{2}n^3 r_{41} E$
+\hl{I}
+$r_{41}|G_{aAs} = \SI{1.4e-10}{c\meter \volt^{-1}} $
+\hl{I}
+$\Delta \phi = \pi_{2} = \frac{2\pi \Delta n}{\lambda}L$
+\hl{I}
+Contrast ratio: $R_{on/off} = \frac{P_{out}(V_{off})}{P_{out}(V_{on})} = \frac{P_{in}e^{-\alpha_0 L}}{P_{in} e^{-(\alpha_0 + \Delta \alpha)L}} = e^{\Delta \alpha L}$
+\hl{I}
+Insertion loss:
+$Loss = \frac{P_{in} - P_{out}(V_{off}) }{P_{in}} = 1-e^{-\alpha_0 L}$
+\colorbox{Orange}{Phase(Interface) Modulator}
+$\Delta T = P_{out} (V_{on}) - P_{out}(V_{off}) = P_{in}[e^{-\alpha_0 L} - e^{-(\alpha_0 + \Delta \alpha)L} ] = P_{in}[e^{(-\alpha_0 L)} (1-e^{-\Delta \alpha L})]$
+\hl{I}
+Optimize Modulation: $\frac{\partial \Delta T}{\partial L} \rightarrow 0$, $L_{opt} = \frac{1}{\Delta \alpha} \ln(\frac{\Delta \alpha}{\alpha_0} + 1)$
+\hl{I}
+Detailed Look: Franz-Keldysh Effect(EA): Oscillations in above bandgap absorption (due to electron standing wave), Below band gap absorption (due to evanescent tails of wavefunction)
+\hl{I}
+Appleid Voltage: Electrostatics of pn Junction
+\hl{I}
+Electric field at quantum well: 2nd order perturbation theory
+\hl{I}
+Change in energy level (DOS): 1st order perturbation theory.
+\colorbox{Orange}{QCSE Advantages}
+more modulation: $w/V_b$
+\hl{I}
+$e^{-}/h^{+}$ beter confined $\rightarrow $ Stronger Exciton Binding energy
+\hl{I}
+Typical Structure = Quantum Well
+\colorbox{Orange}{Summary}
+Schawlow-Towns Limit: $\Delta \nu_{laser} = \frac{\pi h \nu (\Delta \nu_{cavity-res})^2}{P_{out}}$
+\hl{I}
+$D=\epsilon_0 E + P$
+\hl{I}
+$P = \epsilon_0 \chi \cdot E + \chi^{(2)} \cdot E^2 + \chi^{3} \cdot E^{3}$
+\hl{I}
+Schawlow-Town Limit* $\Delta \nu_{laser} = \frac{\pi h \nu (\Delta \nu_{cavity-res})^2}{P_{out}}$
+\hl{I}
+$D = \epsilon_0 E + P$
+\hl{I}
+$P = \epsilon_o \chi \cdot E + \chi^{(2)} \cdot E^2 + \chi^{(3)} \cdot E^{3} + ... = P_{L} + P_{NL}$
+\hl{I}
+Lasers by Cavity Type, Fabry-Perot, Vertical Surface Emitting Lasers = VCSEL, Distributed Bragg Reflector = DBR, Distributed Feedback = DFB
+\hl{I}
+\colorbox{Orange}{Summary NL optics EOM}
+$Energy_{dissipate} = \frac{1}{2} CV_{bias}^{2} = \frac{1}{2}  (\epsilon \frac{WL}{d} ) (d)^2 E_{critical}^{2} = \frac{1}{2}\epsilon \cdot E_{critical}^{2} \cdot(WLd) = \frac{1}{2}\epsilon \cdot E_{critical}^{2} \cdot (Volume)$
+\hl{I}
+$D=\epsilon_0 E + P$
+\hl{I}
+$P = \epsilon_0 \chi \cdot E^2 + \chi^{(2)} \cdot E^2 + \chi^{(3)} \cdot E^3 + ... \text{(From 2 on, Nonlinear Polarization)} = P_L + P_{NL} $
+\hl{I}
+$\frac{L_{equiv-MZ}}{L_{ring}} = \frac{Q \lambda}{2n_g 2 \pi R} = \frac{1}{2}\frac{\Delta \nu_{FRS}}{\Delta \nu_{FWHM}} = \frac{1}{2}F$
+\hl{I}
+$E_{bit-average} = \frac{1}{4}VQ_{total} = e\frac{\lambda A_{mode} V}{8F|\frac{\partial n_{real}}{\partial N} + \frac{\partial n_{real}}{\partial P}|}$
+\hl{I}
+Modulation Characteristics: Contrast ratio $R_{on/off} = \frac{P_{out}(V_{off})}{P_{out}(V_{on})}$
+\hl{I}
+Insertion loss: $Loss = \frac{ P_{in} - P_{out}(V_{off}) }{P_{in}}$
+\hl{I}
+Modulation efficiency $\frac{R_{on/off}}{\Delta V}$
+\hl{I}
+\colorbox{Cyan}{Photodetector}
+Charge Coupled Devices (CCD), Integrated Photo-receiver(Rx)
+\hl{I}
+Devices work by, Semiconductor absorbs light, Photodetector Separates $e^{-}/h^{+}$ generated by absorption, Space charge to perform work or driver a current
+\hl{I}
+Carriers in Action, Drift, Diffusion, Recombination-Generation
+\hl{I}
+\colorbox{Orange}{Recombination-Generation Currents} 
+\textbf{Generation} Band-to-Band, R-G Center, Impact Ionization
+\textbf{Recombination} Direct, R-G Center, Auger
+\hl{I}
+\textbf{Excess Carriers and Charge Neutrality}
+$n \equiv n_0 \text{(Equilibrium)} + \Delta n \text{(Excess)}$
+\hl{I}
+$p\equiv p_0 + \Delta p$
+\hl{I}
+Charge neutrality $\Delta n = \Delta p$
+\hl{I}
+When neutrality is not guaranteed, built-in field causes carrier drift, until neutrality is restored
+\hl{I}
+Recombination Lifetime, Photo-detector, Solar Cell, Pulsed Laser, data-receiving electro-optic Modulators
+\hl{I}
+Assume light generates $\Delta n$ and $\Delta p$. If the light is suddenly turned off, $\Delta n$ and $\Delta p$ decay with time until they become zero. The process of decay is called recombination. The time constant of decay is the \textbf{recombination time} or \textbf{carrier lifetime}, $\tau$. Recombination is nature's way of restoring equilibrium $(\Delta n = \Delta p = 0)$ 
+\hl{I}
+Recombination Lifetime $\tau$ ranges from 1ns to 1 ms in SI and depends on the density of metal impurities (contaminants) such as Au and Pt. These deep traps capture electrons or holes to facilitate recombination and are called recombination centers.
+\hl{I} 
+Recombination Rate [\SI{}{\second^{-1} c\meter^{-3}}] Consider recombination only $\frac{dn}{dt} = -\frac{\Delta n}{\tau}$
+\hl{I}
+$\Delta n = \Delta p$ (Remember: charge neutrality!)
+\hl{I}
+$\frac{dn}{dt} = -\frac{\Delta n}{\tau} = -\frac{\Delta p}{\tau} = \frac{dp}{dt}$
+\colorbox{Orange}{Example: Photoconductor} 
+A bar of Si is doped with boron at $[\SI{10e15}{c\meter^{-3}}]$
+\hl{I}
+It is exposed to light such that electron-hole pairs are generated throughout the volume of the bar at the rate of $ 10^{20} \SI{}{\second^{-1} c\meter^{3}}$
+\hl{I}
+The recombination lifetime is \SI{10}{\micro \second}
+\hl{I}
+What are (a.)$p_0$, (b.)$n_0$, (c.)$\Delta p$, (d.)$\Delta n$, (e.)$p$, (f.)
+\hl{I}
+Remember II. $N_a - N_d >> n_i (i.e., P-type)$ $p = N_a - N_d$ and $n = n_i^2 / p$
+\hl{I}
+If $N_a >> N_d$, $p = N_a$ and $n = n_i^2 / N_a$
+\hl{I}
+a. What is $p_0$: $p_0 = N_a = \SI{10e15}{c\meter^{-3}}$
+\hl{I}
+b. What is $n_0$: $n_0 = n_i^2 /p_0 = \SI{10e5}{c\meter^{-3}}$
+\hl{I}
+c. What is $\Delta p$: In steady-state, the rate of generation is equal to the rate of recombination. $\SI{10e20}{ \second^{-1} c\meter^{3} } = \Delta p / \tau $
+\hl{I}
+$\therefore \Delta p = \SI{10e20}{\second^{-1} c \meter^3} \cdot \SI{10e-5}{\second} = \SI{10e15}{c \meter^{-3}} $
+\hl{I}
+(d.) What is $\Delta n$: $\Delta n = \Delta p = \SI{10e15}{c \meter^{-3}} $
+\hl{I}
+(e.) What is $p$: $p = p_0 + \Delta p = \SI{e15}{c \meter^{-3}} + \SI{e15}{c \meter^{-3}} = \SI{2e15}{c \meter^{-3}}$
+\hl{I}
+(f.) What is $n$: $n = n_0 + \Delta n =  \SI{e5}{c \meter^{-3}} + \SI{e15}{c \meter^{-3}} \approx \SI{e15}{c \meter^{-3}}$ since $n_0 << \Delta n$
+\hl{I}
+(g.) What is $np$: $np ~ \SI{2e15}{c \meter^{-3}} \cdot \SI{e15}{c \meter^{-3}} = \SI{2e30}{c \meter^{-6}} >> n_i^2 = \SI{e20}{c \meter^{-6}}$
+\hl{I}
+The np product can be \textbf{very} different from $n_i^2$
+\hl{I}
+\colorbox{Orange}{Key Parameters} 
+Efficiency  $[ \% ]$, Responsively $[ A/W ]$, Gain $[ factor ]$, Bandwidth $(f_{3dB})[GHz]$, Noise (signal to noise ratio, noise equivalent power), Spectral Response, Polarization Dependency 
+\hl{I}
+Types of Photodetectors: PiN, NiN, MSM(Photoconductor), APD(Avalanche Photo Diode)
+\hl{I}
+\colorbox{Orange}{PhotoConductor} 
+$J_0 = \sigma_0 E = (n_0 g \mu_n + p_0 q \mu_p)E$
+\hl{I}
+With Illumination $\Delta I = A \Delta J = A \cdot \Delta \sigma \cdot E = \delta n \cdot q (\mu_n + \mu_p)\frac{A}{l} \cdot V$
+\hl{I}
+$\delta n = G_0 \SI{}{c \meter^{-3} \second^{-1} } \text{ (generation rate) } \cdot \tau_n \text{ (carrier recombination lifetime) } $
+\hl{I}
+How much photocurrent do we get? $\Delta I = \eta \cdot (\frac{q}{\hbar \omega} )  [ \SI{}{ m \ampere m \watt^{-1} } ] (\text{Photocurrent}) \cdot P_{opt}  [ \SI{}{ m \watt } ] (\text{Photocurrent}) \cdot (\frac{\tau n}{\tau_t}) (\text{Photoconductive gain})$
+\colorbox{Orange}{BJT}
+Analogy to Bi-Polar Transistor
+\hl{I}
+base recombination time $\tau_B$
+\hl{I}
+transit time $\tau_t$
+\hl{I}
+current gain $\frac{I_c}{I_B} = \frac{\tau_t}{\tau_B}$
+\colorbox{Orange}{3dB Bandwidth - optical bits (Light on/off)} 
+Q. How Fast, Q. Whats the limitation, Q: What's the light modulating part in the photocurrent?, A. The carrier modulation in the photocurrent
+\hl{I}
+Bandwidth: $\Delta n$ has been changed by light
+$\delta n = G_0 \SI{}{c \meter^{-3} \second^{-1} } \text{ (generation rate) } \cdot \tau_n \text{ (carrier recombination lifetime) } $
+\hl{I}
+$\frac{\delta \delta n}{\delta t} = G_0 - \frac{\delta n}{\tau n}$
+\hl{I}
+$G_0 \approx e^{-i \omega t}$
+\hl{I}
+$\delta n = \approx e^{-i \omega t}$
+\hl{I}
+Small-signal analysis $\delta n = \frac{G_0 \tau_n}{1 - i\omega \tau_n}$
+\hl{I}
+$\therefore |i_p| = \eta (\frac{q}{\hbar \omega}) \cdot P_{opt,ac} \cdot (\frac{\tau_n}{\tau_t}) \frac{1}{\sqrt{1+ \omega^2 \tau_n^2}}$
+\colorbox{Orange}{3dB Bandwidth of Detectors} 
+$f_{3dB} = \frac{1}{2\pi}\frac{1}{\tau_n}$
+\colorbox{Orange}{Gain Bandwidth Product (GB)}
+Q. Multiply Gain x Bandwidth. What do you get? Q: Can we make GB arbitrarily large?
+$GB = (\frac{\tau_n}{\tau_t}) (\frac{1}{2\pi}) \cdot \frac{1}{\tau_n} = \frac{1}{2\pi} \frac{1}{\tau_t} = \text{ constant for a given device}$
+\hl{I}
+Gain is achieved as expense of Bandwidth, Its a Figure of Merit (FOM) of Detectors, It can not be made arbitrarily large! 
+\hl{I}
+Transit time for electron: $\tau_t = \frac{l}{\nu_n} = \frac{l}{\mu_n E} = \frac{l^2}{\mu_n V}$
+\hl{I}
+Shot Noise: current is carried by discrete quanta (electron). Random fluctuation in the number of electrons arriving in a time interval. The more photons the noisier
+$\langle i_s^2 (f)\rangle = 2q \langle I \rangle \text{(Average Current)} \cdot \Delta f \text{(bandwidth frequency)}$
+\hl{I}
+$f \rightarrow f + \Delta f$
+\hl{I}
+$SNR = \frac{N}{\sqrt{N}} = \sqrt{N}$
+\hl{I}
+\colorbox{Orange}{Generation and Recombination Noise}
+Cause: random generation and recombination of carrier in the semiconductor of the Detector $\langle i_{GR}^2 \rangle = \frac{4 q I_p}{1+(2 \pi f \tau_{n})^2} \cdot \frac{\tau_n}{\tau_t} \cdot \Delta f$
+\hl{I}
+The faster the modulation frequency the noisier", "The shorter the transit time and carrier lifetime the noiser"
+\hl{I}
+\colorbox{Orange}{Thermal("Johnson") Noise}
+Cause: Random thermal motion of charge particles: $\langle i_T^2 \rangle = \frac{4k_B T}{R} \cdot \Delta f$
+The higher the temperature the noiser
+\hl{I}
+\textbf{Signal to Noise Ration} 
+$SNR = \frac{\tau_p^2}{\sum_i \langle i_i^2 \rangle} = \frac{\tau_p^2}{\sum_i (\text{all noise sources}) \langle i_T^2 \rangle } = \frac{\tau_p^2}{ \langle T_s^2 \rangle + \langle i_T^2 \rangle + \langle T_{GR}^2 \rangle }$
+\hl{I}
+Noise-Equivalent (NEP) optical power at which $SNR = 1$ with $\Delta f = 1 [\text{Hz}]$ (Noise bandwidth)
+\hl{I}
+Detectivity $D^*$ (is a FOM): $D^* = \frac{A \cdot {\Delta f}}{NEP} (\frac{a_n \sqrt{[\text{Hz}]}}{W})$
+\hl{I}
+A: area 
+\hl{I}
+$\Delta f$: noise bandwidth
+\hl{I}
+Note: NEP $\alpha \sqrt{\Delta f} \cdot \sqrt{A} \therefore D^* $ is a figure of merit (larger is better)  
+\hl{I}
+Human eye: Logarithmic power sensitivity, spectrally $(400 - 800 \text{ [nm ]} )$, Peak sensitivity around $( 523  [\text{nm} ]  )$
+\hl{I}
+Silicon Detector: Linear power sensitivity, Peak sensitivity in infrared (880 \text{[nm]})
+\hl{I}
+Q. What is the sharp cut-off at longer wavelengths
+\hl{I}
+\colorbox{Orange}{Example: Photoconductor} $\tau_p = \eta \frac{q}{\hbar \omega} \cdot (\frac{\tau_n}{\tau_t}) \cdot P_{opt}$
+\hl{I}
+$\langle i_i^2 \rangle = (2q + 4q \frac{\tau_n}{\tau_t})\cdot \tau_p \cdot \Delta f + \frac{4 k_s T}{R} \Delta f $
+\hl{I}
+Q. Do you recognize the different noises
+\hl{I}
+Q. So, how can we get high SNR
+\hl{I}
+PiN Detector: 1 most desirable, 2 may have long tail in temporal response (diffusion tail) 
+P and N region can be large Eg material to minimize absorption $\Rightarrow P-i-N $, Benifits of PIN, small capacitance $ \Rightarrow $ smaller RC and higher speed, larger absorption $ \Rightarrow $ higher efficiency, But longer transit time $ \Rightarrow $ lower speed
+\hl{I}
+Quantum Efficiency: Surface-illuminated PIN Neglect diffusion current $\eta = \eta_i \cdot (1-R)(1-\exp(- \alpha W))$
+\hl{I}
+$\alpha: $ absorption coefficient 
+\hl{I}
+$\alpha \approx \SI{e4}{     cm^{-1}    } $ for direct bandgap
+\hl{I}
+There is a quantum efficiency - bandwidth trade-off, High $\eta \rightarrow $ large $d \rightarrow$ long transit time
+\hl{I}
+Aka. long RC-delay $\rightarrow $ large capacitance $ \rightarrow$ low bandwidth
+\hl{I}
+$C \approx A/d$
+\hl{I}
+So, how can we get a high efficiency. Answer: low $R$, High $I =$ thick of semiconductor, High $W \rightarrow $ low doping
+\hl{I}
+$x_n + x+p = W = \sqrt{\frac{2 \epsilon_s V_{bi}}{q} (\frac{1}{N_a}+\frac{1}{N_D}) }$
+\colorbox{Orange}{Efficiency}
+Waveguide pin $\eta = \eta_i (1-R)(1-\exp(-\alpha \Gamma L))$ Where $\Gamma$: Confinement factor 
+\hl{I}
+Do edge coupled (waveguide based) detectors have the same $f_{3dB} - \eta$ trade off?
+\hl{I}
+\colorbox{Orange}{APD}
+Avalanche photodiode, biased near reverse breakdown, avalanche, energetic electron (hole) release its kinetic energy by generating an additional electron-hole $\rightarrow$ impact ionization
+\hl{I}
+Usually separate absorption and multiplication (SAM) structure is used for APD, absorption (InGaAs) (low doping) Multiplication (InP), larger bandgap, higher field (high doping). Ideal case: Electron impact ionization only. $\frac{dJ_n(x)}{dx} = \alpha_n J_n(\chi)$, $J_n(\chi)  = J_n(0) \cdot e^{\alpha_n \chi}$
+\hl{I}
+At $\chi = W$ electron current only $J = J_n(\chi = W) = J_n(0)e^{\alpha_n W} = M_n \cdot J_n(0)$
+\hl{I}
+$M_n = e^{\alpha_n W} = $ Multiplication Factor
+\hl{L}
+$\frac{d}{d \chi} J_n(\chi) \text{(Electron current)} = \alpha_n J_n(\chi) \text{electron impact ionization} + \beta_p J_p (\chi) \text{hole impact ionization}$
+\hl{I}
+Photocurrent density from absorption region, Multiplication Factor $M_n = \frac{J}{J_n(0)} = \frac{1}{1 - \int_o^w d \chi^{\prime} \cdot \alpha_n \cdot \exp( - (\alpha_n - \beta_p) \chi^{\prime} ) } = \frac{1}{1 - \frac{\alpha_n}{\alpha_n - \beta_p} \cdot \exp( - (\alpha_n - \beta_p) W ) } =  \frac{\alpha_n - \beta_p}{\alpha_n \exp( - (\alpha_n - \beta_p) W ) - \beta_p} $
+\hl{I}
+Let $k = \frac{\beta_p}{\alpha_n}$
+\hl{I}
+$M_n = \frac{1-k}{e^{-(1-k)\alpha_n W} - k}$
+\hl{I}
+$k=1$, $M_n \rightarrow \infty$ at $\alpha_n W = 1 \rightarrow $ unstable
+\hl{I}
+$k << 1$ Stable gain with lower noise 
+\colorbox{Orange}{APD - GB Product}
+Response Time $\tau = \tau_t \text{(transit time in absorption)} + \tau_m \text{(multiplication time)}$
+\hl{I}
+$\tau_{m} \approx \frac{M_n k W}{\nu_e} + \frac{W}{\nu_n} \approx \frac{M_n k W}{\nu_e}$ when $M_n >> 1$
+\hl{I}
+$\tau \approx \tau_m$
+\hl{I}
+$\tau_t = \text{small}$
+\hl{I}
+Gain-bandwidth product $GxBW = M_n \cdot(\frac{1}{2\pi} \frac{1}{\tau_m}) = M_n \frac{1}{2\pi} \frac{\nu_e}{M_n k W} = \frac{1}{2\pi} \frac{\nu_e}{k w} =$ constant
+\colorbox{Orange}{APD - Noise} 
+$SNR= \frac{\tau_p^2}{\langle \tau_s^2 \rangle + \langle \tau_t^2 \rangle} = \frac{\tau_{p0}^{2} \langle M \rangle^2 } {2q \tau_{p0} \langle M \rangle^2 \cdot F \cdot \Delta f + \frac{4k_T T}{R} \Delta f}$
+\hl{I}
+$\tau_{p0} = \eta \frac{g}{\hbar \omega} P_avg$
+\hl{I}
+For small $\tau_{p0} \cdot SNR \rightarrow \frac{\tau_{po}^2 \langle M \rangle^2}{(\frac{4k_T T}{R}) \Delta f} \propto \tau_{p0}^{2}$
+\hl{I}
+For large $\tau_{p0}$: $SNR\rightarrow \frac{\tau_{p0}}{2 q \cdot F \Delta f} \propto \tau_{p0}$
+\colorbox{Orange}{detectors $\lambda > 100\mu m$}: Small energy, photoconductor can be used for very long wavelength photodetectors using bandage to impurity level transition
+%\colorbox{Cyan}{Solar Cell}
+\colorbox{Thistle}{Hw7}
+two push pull MZI, goal obtain 2$\pi$ phase shift, $M_1$: Pockels effect, $LiNbO_3$, $M_2$: Kerr effect, $GaAs$ 
+\hl{I}
+Assume: $\Delta V_{bias} = 1 [ V ]$
+\hl{I}
+$L_e = 1\mu m$: length between electrodes
+\hl{I}
+$\Delta n = a_1 E$
+\hl{I}
+Phase Interface Modulator
+\hl{I}
+$\Delta \phi = \frac{2 \pi}{\lambda} \cdot \Delta n \cdot L$
+\hl{I}
+$FOM = V_{\pi} \cdot L$: Voltage required to complete phase shift
+\hl{I}
+$V_{B} = 1[ V ]$
+\hl{I}
+$\lambda = 500 [ \SI{}{n \meter } ]$
+\hl{I}
+$L = \frac{\lambda}{4} \Delta n$: length of modulator
+\hl{I}
+a). $\Delta n = q_1 E = r E$
+\hl{I}
+$r_{13} =  \SI{8.6e-12}{ m \volt } $
+\hl{I}
+$r_{33} =  \SI{30.8e-12}{ m \volt } $
+\hl{I}
+To obtain $a\frac{\pi}{2}$ phase shift divide by 2
+\hl{I}
+$E[ \SI{}{ \volt m^{-1} } ]$ electric field
+\hl{I}
+$E = \frac{V}{d} = \frac{1 V}{ \SI{1.0e-6}{ m } }$
+\hl{I}
+$L = \frac{ \lambda }{ 4 }(\frac{1}{2}) \cdot \Delta m = \frac{ \lambda }{8}r_{13} \cdot E = \frac{ \SI{ 5.0e-7 }{ [m] }}{8} \cdot \SI{ 8.6e-12}{[\meter \volt^{-1}]} \cdot \SI{ 1.0e6}{[\volt \meter^{-1}]}$
+\hl{I}
+$L = \SI{ 2.15e-12 }{ [\meter] } \text{(This is small and probably wrong)} $
+\hl{I}
+b). $L = \frac{\lambda}{4}(\frac{1}{2})\Delta n$ for $\frac{\pi}{2}$ phase shift
+\hl{I}
+Kern Effect: $\Delta n = (\lambda K)E^2$
+\hl{I}
+$a_2 = r_{41} = \SI{1.5e-12}{\meter \volt^{-1}}$
+\hl{I}
+$E = \frac{v}{d} = \frac{1}{ \SI{ 1.0e-6 }{}} = \SI{1.0e-6 }{ \volt \meter^{-1}}$
+\hl{I}
+$L =  \SI{1.02e-13}{\meter}$ (also too short, atom size, most likely wrong)
+\hl{I}
+C) The Kerr effect phase shifter is shorter then the pockels effect phase shifter. Shorter is better because to get complete phase shift you need the following $FOM(\text{phase shifter}) = V_{\pi} \cdot L$
+\hl{I}
+d) Silicon photonics carrier based MZI modulator, Paper 40 GB/s silicon photonics modulator for TE and TM polarization. The asymmetric MZI has an optical path length difference of 80 micrometers between the two arms and the star coupler junction is used to split and recombine optical beam in the MZI.
+\hl{I}
+Carrier injection based doping of graphene based electro absorption modulators: A graphene based electro-absorption modulator has been integrated into a passive polymer waveguide platform for the first time the optoelectronic properties of the structure are investigated with numerical simulations and measurements of a fabricated device. The graphene layers transferred to the polymer substrate were analyzed by means of ramen spectroscopy and the results indicate a high crystalize quality of the two dimensional material. The voltage dependent transmission through a 25 \SI{}{[ \mu \meter ]} long device has been measured in the telecommunications relevant wavelength range between $1500  \SI{}{[ n \meter ]}$ and $1600  \SI{}{[ n \meter ]}$ yielding and extinction ratio of $0.056  \SI{}{[ dB \mu\meter^{-1} ]}$ 
+\hl{I}
+b). $V_d = \SI{}{[ n \volt ]} $
+\hl{I}
+$t_{ox} = \SI{7.0e-9}{[ \meter ]}$
+\hl{I}
+$f_v = \SI{0.9e6}{[ \meter \second^{-1} ]}$
+\hl{I}
+$hv = \SI{0.8e6}{[ \meter \second^{-1} ]}$
+\hl{I}
+Drive voltage for max modulation graphene
+\hl{I}
+$hv = 2E_{F} = 2\hbar V_F \sqrt{n \pi (v+v_0)}$
+\hl{I}
+$(\frac{hv}{2\hbar V_f})^2 \frac{1}{\eta} - v_0 = v$
+\hl{I}
+$(\frac{0.8 \SI{}{ [ e\volt ] } } {2 (\SI{6.5e-16}{}) (\SI{0.9e6}{ [ m\second^{-1} ] })  } )^2 \frac{1}{\SI{9e16}{\meter^{-2} \volt^{-1} }} = \SI{5.19}{\volt} = |v + (\SI{-0.8}{\volt})|$
+\hl{I}
+$v_d = -4.39 \text{ and } = 5.99$
+\hl{I}
+\textbf{Advantages found in a graphene based waveguide}
+\hl{I}
+modulator in the practice problem. The size of the modulator is determined by the distinct advantages found in a graphene based waveguide-integrated electro-absorption modulator.
+\hl{I}
+1). Strong line graphene interaction, in comparison to compound semicondcutors, such as those exhibiting the quantum-well with quantum-confined stark effect (QCSE),
+a monolayer of graphene possesses a much stronger inter band optical transition, which finds applications in novel photodetectors.
+\hl{I}
+2). Broadband operation, as the high frequency dynamic conductivity Dirac fermions is constant, the optical absorption of graphene is independent of wavelength, covering all telecommunications bandwidth and also mid- and far infarad
+\hl{I}
+3). High speed orientation which a carrier mobility exceeding $\SI{200}{ [  c\meter^2 \volt^{-1} \second^{-1} ] }$ at room temperature the fermi level and hence the optical absorption of graphene can be rapidly modulated through the band-filling effect.
+in addition, speed limiting processes in graphene operate on the timescales of picoseconds which implies that graphene - based electronics may have the potential to operate at $\SI{500}{ [  G\hertz ] }$ depending on the carrier density and graphene quality.
+\hl{I}
+d). 3 ways to improve RC delay R is the resistance, representing the difficulty of the electric current to pass through an conducting material. C is the capacitance representing the degree to which an insulating material holds charge.
+The Speed of signal propagation in logic and memory wired is governed by the same basic principals and depends on the product of resistance and capacitance (RC).
+Due to manufacturing constraints lower the resistance is therefore the preferred approach for scaling performance.
+\hl{I}
+2. In the vertical dimension, solutions are aimed at minimizing interface resistance.
+\hl{I}
+3. In the lateral dimension, solutions are aimed at optimizing the conductivity of the metal forming the wire.
+\hl{I}
+3). a). increasing the photocurrent of a photodetector, increase the optical power received by the device. A photodiodes capability to covert light energy to electrical energy, expressed as a percentage is its Quantum Efficiency (Q.E.)
+\hl{I}
+$\eta = \frac{r_e}{r_p} =\frac{ \text{ numbers of electrons (holes) collected as} \frac{I_p}{s} } {\text{number of incident} \frac{\text{photons}}{s} }$
+\hl{I}
+Depends on $\lambda$, through absorption coefficient, thickness of layers, Doping, geometry, operating under ideal conditions of reflectance, crystal structure and internal resistance, a high quality silicon photodiode
+\hl{I}
+Would be capable of approaching Q.E. of $80\%$
+\hl{I}
+contact pad length: $l = \SI{0.5}{\mu \meter}$
+\hl{I}
+bias voltage: $V_B = 1[ \SI{}{\volt} ]$
+\hl{I}
+mobility: average of n and p type for a doping level of $\SI{e17}{c\meter}$
+\hl{I}
+room temperature $300k$
+hl{I}
+$N_a = N_d$
+\hl{I}
+$n = N_d$
+\hl{I}
+$p=N_a$
+\hl{I}
+photodetector gain $S_i:$ Carrier lifetime
+\hl{I}
+$\frac{\tau_r}{\tau_{t}} =$ gain of photodetector
+\hl{I}
+$\Delta I = $ number of photons x charge x gain
+\hl{I}
+$V= \frac{l}{d}$
+\hl{I}
+$\epsilon = -\frac{d\phi}{dx}$
+\hl{I}
+$\tau_t = \frac{d}{v_d}$
+\hl{I}
+$\epsilon = -\frac{v}{x}$
+\hl{I}
+transit time = $\tau_t = \frac{d}{v_d} = \frac{d}{\mu_d \epsilon} = -\frac{-x^2}{\bar{\mu} V_{bias}}$
+\hl{I}
+$Si \rightarrow \mu = \bar \mu - \frac{\mu_n \cdot \mu_p}{2}$
+\hl{I}
+$J = \frac{I}{A}$
+\hl{I}
+$F=m^*a$
+\hl{I}
+$I = J \cdot A$
+\hl{I}
+$m^* \frac{V_d}{\tau_n} = q\epsilon$
+\hl{I}
+$I=qvnA$
+\hl{I}
+$V_s = \frac{q \tau_n}{m_*}\cdot \epsilon$
+\hl{I}
+$v_d = \bar \mu \epsilon$
+\hl{I}
+$\tau_t = \frac{-x^2}{\bar \mu v_{bias}}$
+\hl{I}
+$\bar \mu = \frac{q \tau_n}{m^*}$
+\hl{I}
+$\tau_{n} = \frac{\bar{\mu} m^*}{q}$
+\hl{I}
+$\frac{\tau_n}{\tau_t}=\frac{\bar \mu^2 v_b m^*}{-q x^2} \frac{ \SI{}{ [ \meter^4 \frac{\volt^2}{\second^2} ][ \volt ][ \kilogram ]} } { \SI{}{ [ \ampere \second ][ \meter^2 ]} }$
+\hl{I}
+$T_t = \frac{x}{\bar{\mu} \epsilon }=\frac{-x^2}{\bar{\mu} v_{bias} }$
+\hl{I}
+$\epsilon = \frac{-d \phi}{dx}$
+\hl{I}
+$\epsilon = -\frac{V}{x}$
+\hl{I}
+$\frac{\tau_n}{\tau_t} =$ gain of photodetector
+\hl{I}
+$\tau_n =$ carrier lifetime
+\hl{I}
+$\tau_t =$ transit time
+\hl{I}
+$\tau_{n} = $
+\hl{I}
+$F = m^* a$
+\hl{I}
+$\tau_{\hbar} = \frac{m \cdot \mu}{q}$
+\hl{I}
+$[J] = \frac{I}{area}$
+\hl{I}
+$[I] = q v_{en} n A$
+\hl{I}
+$V_{velocity} =\bar{\mu} \epsilon$
+\hl{I}
+$\tau_n = \frac{m^* \cdot \mu}{q}$
+\hl{I}
+$\SI{}{[\coulomb]}$ = $\SI{}{[\ampere \second]}$
+\hl{I}
+$\tau_t = \frac{l^2}{\mu v}$
+\hl{I}
+$\frac{\tau_n}{\tau_t} = \frac{\frac{m^* \cdot \mu}{q}}{\frac{l^2}{\mu v}} = \frac{m^* \mu^2}{q l^2} \cdot v \frac{ \SI{} {[\kilogram] [\meter^4] [\volt]} }{\SI{}{ [\meter^2] [ \volt^2 ] [ \second^2 ] [ \coulomb ] }} $
+\hl{I}
+$\SI{}{[\joule]}= \SI{}{ [\coulomb] [\volt] }$
+\hl{I}
+$\mu \cdot = \bar \mu$ average mobility for silicon
+\hl{I}
+for carrier concentration of $N = \SI{e17}{c \meter^3}$
+\hl{I}
+$\mu_p = 0.096 \SI{}{[ \meter \volt \second ]}$
+\hl{I}
+$\therefore \bar{\mu} = \frac{\mu_n + \mu_p}{2} = \frac{0.14 + 0.045}{2} = 0.0925 \SI{}{[ \meter^2 \volt^{-1} \second^{-1}]}$
+\hl{I}
+$q = \SI{1.6e-19}{[ \coulomb ]}$
+\hl{I}
+$l = \SI{5.0e-7}{ [\meter] }$
+\hl{I}
+$V = 1\SI{}{[ \volt ]}$
+\hl{I}
+$\frac{\tau_n}{\tau_t} = \frac{1.08(0.0925)^2}{\SI{1.6e-19}{} (\SI{5.0e-7}{} )^2 }$
+\hl{I}
+In silicon the longitudinal electron mass is $m_e, l^* = 0.98m_0$ and the transverse electron masses are $m_e,t^* = 0.19m_0$ where $m_0 \SI{9.11e-31}{\kilogram}$ is the free electron rest mass
+\hl{I}
+$\therefore m_e^* = 0.98(\SI{9.11e-31}{\kilogram})$
+\hl{I}
+$\therefore \frac{\tau_n}{\tau_t} = \frac{ 0.98( \SI{9.11e-31}{} (0.0925)^2 )}  { \SI{1.6e-19}{}   \SI{5.0e-14}{} }$
+\hl{I}
+$gain = 0.190971$ very little gain
+\hl{I}
+c.) $\Delta I = \frac{photons}{second} \cdot charge \cdot gain$
+\hl{I}
+$QE = 0.9[]$
+\hl{I}
+$P = \SI{1.0e-3}{[\watt]}$
+\hl{I}
+$\lambda = \SI{1.31e-16}{ [\watt] }$
+\hl{I}
+$P = \SI{1.0e-3}{[\watt]}$
+\hl{I}
+$\lambda = \SI{1.31e-6}{[\meter]}$
+\hl{I}
+$\Delta = \eta (\frac{q}{\hbar \omega}) \cdot P_{opt} \cdot (\frac{\tau_n}{\tau_t})$
+\hl{I}
+$\tau_n =$ carrier lifetime $\SI{}{[\second]}$
+\hl{I}
+$\tau_t =$ transit time $\SI{}{[\second]}$
+\hl{I}
+$\hbar \omega =$ energy of a photon
+\hl{I}
+$E = \hbar \omega \SI{}{\joule}$
+\hl{I}
+$E = \frac{hc}{\lambda} = \frac{ \SI{6.626e-34}{[\joule \second]} \cdot \SI{2.998e8}{[\meter \second^{-1}]} }{ \SI{1.31e-6}{ \meter } }$
+\hl{I}
+$E =  \SI{1.51e-19}{ [ \joule ] } = \hbar \omega $
+\hl{I}
+$\eta =$ quantum efficiency
+\hl{I}
+$ \Delta I =  0.9( \frac{ \SI{1.6e-19}{} } { \SI{1.516e-19}{} } ) (\SI{1.0e-3}{}) (0.19) = \SI{0.00018}{[\ampere]}$
+\hl{I}
+\colorbox{Thistle}{Hw8}
+\hl{I}
+When light moves from a medium to a different medium we have on of three phenomena,
+\textbf{reflection} when the light bounces off the medium. 
+\textbf{Absorption}, when the light is converted to another form of energy.
+\textbf{Transmission}, when light passes through a material.
+\textbf{Refraction}, change in direction due to a change in transmission medium
+\hl{I}
+\textbf{phase velocity}: rate at which the phase of the wave propagates in space. The velocity at which the phase of any one frequency component of the wave travels.
+\hl{I}
+\textbf{group velocity}: velocity at which the overall shape of the waves amplitude, known as the modulation or envelope of the wave, propagates through space.
+\hl{I}
+c. Wave equation in 3D: $\nabla^2 \psi = \frac{1}{c^2}\frac{d \psi^2}{dt^2}$
+\hl{I}
+Maxwells equation in differential form: \textbf{Gauss's law} $\nabla \cdot \vec{E} = \frac{\rho}{\epsilon_0}$
+\hl{I}
+\textbf{Gauss's law for magnetism}: $\nabla \cdot \vec{B} = 0$
+\hl{I}
+\textbf{Faraday Equation}: $\nabla \cross \vec{E} = \frac{-d\vec{B}}{dt}$
+\hl{I}
+\textbf{Ampere's circuital law}: $\nabla \cross \vec{B} = \mu_0 (\vec{J} + \epsilon_0 \frac{d\vec{E}}{dt})$
+\hl{I}
+$\because $ In free space, no current (current density), no charge density
+\hl{I}
+$\therefore \nabla \cdot \vec{E} = 0$
+\hl{I}
+$\nabla \cdot \vec{B} = 0$
+\hl{I}
+$\nabla \cdot \vec{B} = 0$
+\hl{I}
+$\nabla \cross \vec{E} = \frac{-d\vec{B}}{dt}$
+\hl{I}
+$\nabla \cross \vec{B} = \mu_o \epsilon_0 \frac{d\vec{E}}{dt}$
+\hl{I}
+$\because \nabla \cross (\nabla \cross \vec{v}) = \nabla (\nabla \cdot \vec{v}) - \nabla^2 \vec{v}$
+\hl{I}
+$\therefore \nabla \cross (\nabla \cross \vec{E}) = \nabla \cross (\frac{-d\vec{B}}{dt}) = \frac{-d}{dt}(\nabla \cross \vec{B}) = \frac{-d}{dt}(\mu_0 \epsilon_0 \frac{d\vec{E}}{dt}) = \nabla \cdot (\nabla \cdot \vec{E}) - \nabla^2 \cdot \vec{E} = 0-\nabla^2 \vec{E}$
+\hl{I}
+$\therefore \nabla^2 \vec{E} = \mu_0 \epsilon_0 \frac{d^2 \vec{E}}{dt^2} $
+\hl{I}
+Wave equation for the electric field $\mu \epsilon = \frac{1}{c^2}$
+\hl{I}
+Now for magnetic field $\nabla \cross (\nabla \cross \vec{B}) = \nabla \cross (\mu_0 \epsilon_0 \frac{d\vec{E}}{dt}) = \mu_0 \epsilon \frac{d}{dt}(\nabla \cross \vec{E}) = -\mu_0 \epsilon \frac{d^2 B}{dt^2}$
+\hl{I}
+$\nabla \cdot (\nabla \cdot \vec{B}) - \nabla^2 \vec{B} = -\mu_0 \epsilon \frac{d^2 B}{dt^2}$
+\hl{I}
+$-\nabla^2 \vec{B} = -\mu_0 \epsilon_0 \frac{d^2 B}{dt^2}$
+\hl{I}
+$\nabla^2 \vec{B} = \mu_0 \epsilon_0 \frac{d^2 B}{dt^2}$
+\hl{I}
+$\nabla^2 \vec{B} = \frac{1}{c^2} \frac{d^2 \vec{B}}{dt^2}$
+\hl{I}
+Beating length: twice the minimum distance required to exchange the guided power between two wave guides
+\hl{I}
+\textbf{Symmetric couplers} based on coupled lines are designed for uniform coupling over the quarter of the wavelength region where coupling takes place.
+\hl{I}
+\textbf{Asymmetric couplers}: have variable coupling between the two transmission lines. These couplers can have quite wide bandwidth, greater than 28:1
+\hl{I}
+Best Coupling: $n_{Tm1} + n_{Tm2} = 2n_{Tm3}$
+\hl{I}
+Cross: $n_{Tm2} \neq n_{Tm2}$
+\hl{I}
+bar: $n_{Tm1} = n_{Tm2}$
+\hl{I}
+\colorbox{Orange}{Laser Analysis}
+$\alpha_i = 20 \SI{}{c \meter^{-1}}$
+\hl{I}
+$\Gamma = 20 \% $
+\hl{I}
+$L = \SI{100}{\mu m}$
+\hl{I}
+$\eta = \eta_{Si} = 3.9766$
+\hl{I}
+$R = 40\%$
+\hl{I}
+intrinsic loss: $\alpha_i \SI{}{[c\meter^{-1}]}$
+\hl{I}
+overlap factor: $\Gamma \SI{}{[]}$
+\hl{I}
+laser length: $\Gamma \SI{}{[\mu m]}$
+\hl{I}
+gain medium index of refraction: $\eta \SI{}{[ ]}$
+\hl{I}
+reflection:$R \SI{}{[ ]}$
+\hl{I}
+threshold gain: $g_{th} [\SI{}{c \meter}]$
+\hl{I}
+$g_{th}\Gamma = \alpha_i + \alpha_m $
+\hl{I}
+mirror loss: $\alpha_m \SI{}{[c\meter^{-1}]} = \frac{1}{2L} \ln(\frac{1}{R_1 R_2})$
+\hl{I}
+$g_{th} = \frac{\alpha_{i} + \frac{1}{2L} \ln(\frac{1}{R_1 and R_2})}{\Gamma} = \frac{\SI{20}{[c\meter^{-1}] }  \frac{1}{\SI{1.0e-2}{c\meter}} (\ln(\frac{1}{0.4^2})) } {0.2} = \SI{1016.29}{[ c\meter^{-1} ]}$
+\hl{I}
+\colorbox{Thistle}{QCSE}
+The quantum confined stark effect describes the effect of an external electric field upon the light absorption spectrum or emission spectrum of a quantum well (QW). In the absence of an external electric field, electrons and holes within the quantum well may only occupy states within a discrete set of energy substances. Only a discrete set if frequencies may be absorbed or emitted by the system.
+\hl{I}
+When an external electric field is applied, the elctron states shift to lower energies while the hole states shift to higher energies. This reduces the permitted light absorption or emission frequencies. Additionally, the external electric field shifts electrons and holes to opposite sides of the well, decreasing the overlap integral which in turn reduces the recombination efficiency of the system. Allows for rapid switching of optical signals on an off. 
+\hl{I}
+b.) Phase shift based modulation
+$P_{out} = P_{in}\cos^2 [\frac{\Delta \phi (V)}{2}]$
+\hl{I}
+$\Delta \phi = \frac{2\pi \Delta n}{\lambda}L$
+\hl{I}
+$(FOM)_{Deivce} = \frac{ER}{V_{pp}} \cdot Bw_{3dB} \cdot (\frac{1}{IL})|_{\text{on chip }v = 0}$
+\hl{I}
+To optimize, increase current I, Length L, Voltage V, in order to decrease FOM and improve the device 
+\hl{I}
+PIN photodiodes, to enhance the responsitivrty of the photodiode, an intrinsic region is used as the major absoprtion layer is added. Incase in W (width of insultor) greater than 1/alpha  enhances the photocurrent because of the increasing amount of absorption. 
+\hl{I}
+Photo-current $\Delta I$
+\hl{I}
+quantum efficiency: $\eta = 90\%[]$
+\hl{I}
+Photocurrent: $\Delta I = \eta (\text{Quantum efficiency}) \cdot (\frac{q}{\hbar \omega} \SI{}{[ m\ampere m\watt^{-1} ] ) (\text{responsivity})} \cdot P_{opt} \SI{}{[ m\watt ]} (\text{input power}) \cdot \frac{\tau_n}{\tau_t}[] \text{(gain)} =(\SI{0.7}{[\ampere \watt^{-1}]})(\SI{5e-3}{[\watt]})(1.0)(0.9) = \SI{3.15e-3}{\ampere}$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\blindtext
+\end{document}  
